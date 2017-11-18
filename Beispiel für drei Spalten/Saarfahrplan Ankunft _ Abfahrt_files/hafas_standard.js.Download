@@ -1,0 +1,252 @@
+/* HAFAS BASIC - External Javascript (based on: R4 v1.9)         */
+/* v1.0  created May 2002 by MB supported by Anton & Friedrich   */
+/* v1.9  changed 25.09.2002 - latest R4 version                  */
+/* v2.0  changed 24.10.2002 - locType can be 'LIST' or 'RADIO'   */
+/* v2.1  changed 13.11.2002 - function popUp administrates also  */
+/*       new style 'loc' to replace formerly function openInfo   */
+/* v2.2  changed 29.01.2003 by JF - TripleID value added         */
+
+function bitfield(field,array) {
+  var result = "";
+  for (var i=0; ((i < field.length) && (field.length == array.length)); i++) {
+    result = result + array[i] + ((field.substr(i,1) == '1') ? "=yes" : "=no") + ((i+1 < field.length) ? "," : "");
+  }
+  return result;
+}
+
+/* open a popup-window with any content */
+function openPopup(url,windowname,topPosition,leftPosition,width,height,flags) {
+   var popUpSwitches = new Array("location","menubar","scrollbars","status","resizable","toolbar");
+   flags = bitfield(flags,popUpSwitches)
+
+   // URL Korrektur um JavaScript Security Error zu vermeiden
+   // gleichen Hostnamen von PopUp und Opener
+   var startIndex = url.indexOf("//");
+   if (startIndex >= 0) {
+      var newUrl = url.substring(0, startIndex);
+
+      url = url.substring(startIndex+2, url.length);
+      startIndex = url.indexOf("/");
+      url = url.substring(startIndex, url.length);
+
+      var first = newUrl.concat("//");
+      var second = first.concat(window.location.host);
+      var third = second.concat(url);
+      url = third;
+   }
+
+   var newwin = window.open(url,windowname,"top="+topPosition+",left="+leftPosition+",width="+width+",height="+height+flags);
+   newwin.focus(self);
+}
+
+/* Set Date by JavaScript */
+function getjsDate(type){
+    var ndate = new Date();
+    var t = ndate.getDate();
+    var m = 1+(1*ndate.getMonth());
+    var g = "g"+ndate.getFullYear();
+    var j = g.substring(3,5);
+    if(t<10) t = "0"+t;
+    if(m<10) m = "0"+m;
+    if(j<10) j = "0"+1*j;
+    if(type=="full")
+      {var date = t+"."+m+"."+j; return date;}
+    else
+      {var date = new Array(t,m,j); return date;}
+    }
+
+function checkWeekday(count,journeyType,returnDateOnly){
+    var getcDate = eval("document.formular.REQ"+journeyType+"JourneyDate.value.toLowerCase();");
+    if(getcDate == ""){var nix = 0;} else
+    if((getcDate.length > 2) || (getcDate.indexOf("+")!= -1)) /* Abfrage auf '+' benötigt ??? */
+      {changeDate(count,journeyType,returnDateOnly);}
+    else
+      {doWeekday(journeyType,getcDate,returnDateOnly);}
+    }
+
+function useOutwardDate(wDay)
+   {
+   var getcDate = eval("document.formular.REQ0JourneyDate.value.toLowerCase();");
+   var reg = eval("/^ *("+wDay+")\, */");
+   var cDate = getcDate.replace(reg,"");
+   //var t = (cDate.substring(0,cDate.indexOf(".")));
+   //var m = (cDate.substring((cDate.indexOf(".")+1),cDate.lastIndexOf(".")));
+   //var j = (cDate.substring((cDate.lastIndexOf(".")+1),cDate.length));
+   //var date = new Array(t,m,j);
+   var date = cdate.split(".");
+   return date;
+   }
+
+function doWeekday(journeyType,getcDate,returnDateOnly){
+   var wDayOri = eval("document.formular.wDayExt"+journeyType+".value;");
+   var wDay = eval("document.formular.wDayExt"+journeyType+".value.toLowerCase();");
+   if(journeyType == 0 && returnDateOnly == "yes")
+      {var dateField = getjsDate('field');}
+   else if(journeyType == 1 && returnDateOnly == "yes")
+      {var dateField = useOutwardDate(wDay);}
+   else /* if(journeyType == 1 && returnDateOnly == "no") */
+      {var dateField = getjsDate('field');}
+
+   var reg = eval("/^ *("+wDay+") */");
+   var test = getcDate.match(reg);
+   if(test!=null)
+      {
+      var days = getDaysSince1980((1*("20"+dateField[2])),(1*dateField[1]),(1*dateField[0]));
+      var cwd = (wDay.substr((3*(1*days%7)),2));
+      var nwd = test[0];
+      var nwdidx  = (wDay.indexOf(test[0])/3);
+      var cwdidx  = (wDay.indexOf(cwd)/3);
+      if(nwdidx < cwdidx)
+         {nwdidx = nwdidx + 7 - cwdidx;}
+      else
+         {nwdidx = nwdidx - cwdidx;}
+      var newDay = nwdidx;
+      var gDate = gregDate(1*newDay+1*(getDaysSince1980((1*("20"+dateField[2])),(1*dateField[1]),(1*dateField[0]))));
+      var days = (1*+newDay+1*getDaysSince1980((1*("20"+dateField[2])),(1*dateField[1]),(1*dateField[0])));
+      setNewDate(journeyType,gDate,getcDate,wDayOri,days);
+      }
+   }
+
+function changeHour(count,journeyType,returnHourOnly){
+    var today = new Date();
+    var currentTime = eval("document.formular.REQ"+journeyType+"JourneyTime.value;");
+    currentTime = currentTime.split(":");
+    if(isNaN(parseInt(currentTime[0])) || isNaN(parseInt(currentTime[1]))) {
+       eval("document.formular.REQ"+journeyType+"JourneyTime.value = document.getElementById('originalTime').value;");
+       return;
+    }
+    var difference = parseInt(count,10);
+    // auf volle Stunden auf- oder abrunden
+    if((difference < 0) && (currentTime[1] != 0)){ difference++; }
+    today.setHours(parseInt(currentTime[0],10)+parseInt(difference),10);
+    today.setMinutes(currentTime[1]);
+    var hours = (today.getHours() < 10)?'0'+today.getHours():today.getHours();
+    // auf volle Stunden auf- oder abrunden
+    //var minutes = (today.getMinutes() < 10)?'0'+today.getMinutes():today.getMinutes();
+    var minutes = '00';
+    eval("document.formular.REQ"+journeyType+"JourneyTime.value = '"+hours + ":" + minutes +"';");
+}
+
+/* Get and Calculate new date */
+function changeDate(count,journeyType,returnDateOnly){
+    var wDay = eval("document.formular.wDayExt"+journeyType+".value;");
+    var getcDate = eval("document.formular.REQ"+journeyType+"JourneyDate.value;");
+    var reg = eval("/^ *("+wDay+")\, */");
+    if(getcDate=="" && journeyType==1 && returnDateOnly=="no")  {var getcDate = getjsDate('full');}
+    if(getcDate=="" && journeyType==1 && returnDateOnly=="yes") {var getcDate = eval("document.formular.REQ0JourneyDate.value;");}
+    var cDate = getcDate.replace(reg,"");
+    var ctg = 1*(cDate.substring(0,cDate.indexOf(".")));
+    var cmt = 1*(cDate.substring((cDate.indexOf(".")+1),cDate.lastIndexOf(".")));
+    var cjr = (cDate.substring((cDate.lastIndexOf(".")+1),cDate.length));
+    if(ctg=="" || cmt=="" || cjr=="")
+      {/* NIX */}
+    else
+      {
+       if(cjr.length==4){cjr = cjr.substring(2,4);};
+       var gDate = gregDate(1*count+1*(getDaysSince1980((1*("20"+cjr)),cmt,ctg)));
+       var days = (1*count+1*(getDaysSince1980((1*("20"+cjr)),cmt,ctg)));
+       setNewDate(journeyType,gDate,cDate,wDay,days);
+       }
+}
+
+function setNewDate(journeyType,gDate,cDate,wDay,days)
+   {
+   var nwd = (wDay.substr((3*(1*days%7)),2));
+   if(gDate[0]<10){gDate[0]="0"+gDate[0];}
+   if(gDate[1]<10){gDate[1]="0"+gDate[1];}
+   var nDate = nwd+", "+gDate[0]+"."+gDate[1]+"."+gDate[2];
+   if(nDate.indexOf("NaN")!=-1) var nDate = cDate;
+   eval("document.formular.REQ"+journeyType+"JourneyDate.value =\""+nDate+"\";");
+   }
+
+function getDaysSince1980(y, m, d){
+   var daysInMonth = new Array(0,31,59,90,120,151,181,212,243,273,304,334);
+   var returnDays = (y-1980)*365;
+   returnDays    += (y-1980+3)/4;
+   returnDays    += daysInMonth[m-1];
+      if(m>2 && isLeapYear(y)==true) returnDays ++;
+   returnDays += d;
+   returnDays = parseInt(returnDays);
+   return returnDays;
+   }
+
+function isLeapYear(y){if((y%4)==0 && (y%100)!=0 || (y%400)==0) return true;}
+
+function gregDate(daysSince1980){
+   var daysSince1980 = parseInt(daysSince1980);
+   var daysInMonth = new Array(0,31,59,90,120,151,181,212,243,273,304,334);
+   var daysInYear = 366;
+   var years      = 0;
+   var february_29;
+   var n = 11;
+   if(daysSince1980 < 0) daysSince1980 = 0;
+   while(daysSince1980> daysInYear){
+      years ++;
+      daysSince1980 -= daysInYear;
+      if((years%4)==0) {daysInYear = 366;} else {daysInYear = 365;}
+      }
+   if((years%4)==0 && daysSince1980>=60)
+      {february_29 = true; daysSince1980 --;} else
+      {february_29 = false;}
+
+   while(n>0 && daysInMonth[n]>=daysSince1980) n--;
+   if(february_29==true && daysSince1980 == 59) daysSince1980 ++;
+   var d = (daysSince1980-daysInMonth[n]);
+   var m = n+1;
+   var ty = (years + 1980).toString();
+   var y = ty.substring(2,4);
+   var gDate = new Array(d,m,y);
+   return gDate;
+   }
+
+function eID(id){
+    return document.getElementById(id);
+}
+
+function disableVias(checked){
+    if(checked) {
+       if($('morevias1')){ $('morevias1').style.display = 'none'; }
+       if($('morevias2')){ $('morevias2').style.display = 'none'; }
+       if($('viaTable1')) { $('via1').disabled = true; $('viaTable1').style.display = 'none';  }
+       if($('viaTable2')) { $('via2').disabled = true; $('viaTable2').style.display = 'none';  }
+    }else{
+       if($('morevias1')){ $('morevias1').style.display = 'inline'; }
+       if($('morevias2')){ $('morevias2').style.display = 'inline'; }
+       if($('viaTable1')) { $('via1').disabled = false; $('viaTable1').style.display = '';  }
+       if($('viaTable2')) { $('via2').disabled = false; $('viaTable2').style.display = '';  }
+    }
+}
+
+/* Select locations from history-list */
+function useHistory(varselect,currentLocation){
+
+    // history list
+    var historyListID = eID("history" + varselect);
+    var index  = historyListID.selectedIndex;
+
+    // element values
+    var text   = historyListID.options[index].text;
+    var triple = historyListID.options[index].value;
+    var type = 255;
+    var tokens = triple.split("@");
+    if (tokens[0].charAt(0) == 'A'){
+      type = tokens[0].charAt(2);
+    }
+
+    // id's of relevant location input fields
+    var LocationInputFieldID = eID(varselect);
+    var LocationTypeRadioID = eID('locType_' + varselect + '_' + type);
+    var LocationTripleHiddenID = eID('tripleID' + varselect);
+
+    // transfer history list entry into location input fields: name, type, triple-id
+    if(triple=="x"){
+      // first entry in list: dummy
+      historyListID.options[0].selected=true;
+    } else {
+      LocationInputFieldID.value = text;
+      LocationTripleHiddenID.value = triple;
+      LocationTypeRadioID.checked = true;
+      // Reset select list
+      historyListID.selectedIndex = 0;
+    }
+}

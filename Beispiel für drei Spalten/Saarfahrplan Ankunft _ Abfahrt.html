@@ -1,0 +1,1257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0160)http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&input=15537&boardType=dep&time=now&productsFilter=7:1111101&selectDate=today&maxJourneys=15&start=yes -->
+<html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Saarfahrplan Ankunft&nbsp;/&nbsp;Abfahrt</title>
+<meta http-equiv="X-UA-Compatible" content="IE=10">
+
+<link rel="shortcut icon" href="http://www.saarfahrplan.de/hafas-res/img/favicon.ico" type="image/ico">
+<link rel="apple-touch-icon-precomposed" href="http://www.saarfahrplan.de/hafas-res/img/apple-touch-icon-precomposed.png">
+<script type="text/javascript" src="./Saarfahrplan Ankunft _ Abfahrt_files/hafas_standard.js.Download"></script>
+<script type="text/javascript" src="./Saarfahrplan Ankunft _ Abfahrt_files/FSuggest_v1.2.js.Download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var t_suggestionsoff = "Vorschläge aus";
+var t_suggestionson = "Vorschläge ein";
+var t_minimapoff = "Mini-Karte aus";
+var t_suggestions = "Vorschl&#228;ge";
+var t_suggestionscookie = "Favoriten";
+var t_topMatches = "Toptreffer";
+var t_furtherMatches = "Nach weiteren Treffern suchen...";
+var t_meansOfTransport = "Verkehrsmittel an";
+var t_connectionsPerYear = "Fahrten im Jahr";
+var t_location = "Ort";
+var t_limitSearchMap = "Suche nur auf Kartenausschnitt";
+var t_minimapon = "Mini-Karte an";
+var t_suggestHint1 = "Keine Toptreffer gefunden. Benutzen Sie die <br/><b>Suggest-Funktion</b>, in dem Sie mindestens <br/><b>";
+var t_suggestHint2 = "Buchstaben eingeben</b>!";
+var t_filterStations = "Hst.";
+var t_filterAddresses = "Adressen";
+var t_filterPOI = "POI";
+function fixedLoc(par){
+//document.getElementById('inputEvaId').value = par.evaId;
+}
+function getElementsByClass(searchClass, domNode, tagName) {
+if (domNode == null) {
+domNode = document.body;
+}
+if (tagName == null) {
+tagName = "*";
+}
+var el = new Array;
+var tags = domNode.getElementsByTagName(tagName);
+var tcl = "" + searchClass + "";
+for (i = 0, j = 0; i < tags.length; i++) {
+var test = " " + tags[i].className + " ";
+if (tags[i].className.indexOf(searchClass) != -1) {
+el[j++] = tags[i];
+}
+}
+return el;
+}
+function initHafasSuggest(){
+var elements = getElementsByClass("HafasSuggest",null,"input");
+for (var i=0;i < elements.length; i++) {
+if(elements[i].id != 'undefined') {
+var suggid = elements[i].id;
+}else{
+var suggid = 'hfs_suggest_input_' + i;
+}
+var classes = elements[i].className.split(" ");
+var suggestType = 0;
+var stationBoardSuggest = false;
+var isVia = false;
+var callbackArr = new Array();
+for(var j=0;j < classes.length; j++){
+if(classes[j] == "st"){
+suggestType += 1;
+}else if(classes[j] == "adr"){
+suggestType += 2;
+}else if(classes[j] == "poi"){
+suggestType += 4;
+}else if(classes[j] == "stb"){
+stationBoardSuggest = true;
+}else if(classes[j] == "via"){
+isVia = true;
+}else if(classes[j].indexOf('sc_') >= 0){
+var selCallback = eval(classes[j].replace('sc_',''));
+callbackArr.push(selCallback);
+}
+}
+if(suggestType == 0){
+suggestType = 255;
+}
+var attr = (elements[i].getAttribute('name') != null)?elements[i].getAttribute('name'):'S';
+var currParam = {loc:suggid,
+type:attr,
+minChar:4,
+cookiename:'std30-history',
+stopDelay:400,
+requestType:'js',
+useFurtherMatches:true ,
+useProducts:true,
+useWeight:true,
+useWrap:false,
+useHouseNumber:false,
+useHighlighting:true,
+useCategory:false,
+detachable:true,
+useTypeFilter:false,
+useMaps:true,
+useTopFavorites:true,
+useAutoFillIn:true
+};
+if(stationBoardSuggest){
+currParam.type = "stb";
+}
+if(isVia){
+suggid.match(/(\d)/);
+var viaNo = RegExp.$1;
+currParam.requestURL = 'http://www.saarfahrplan.de/cgi-bin/ajax-getstop.exe/dny?start=1&tpl=suggest2json&REQ0JourneyStops'+viaNo+'.0A='+suggestType+'&getstop=1&noSession=yes&REQ0JourneyStopsB=12&REQ0JourneyStops'+viaNo+'.0G=';
+}else{
+currParam.requestURL = 'http://www.saarfahrplan.de/cgi-bin/ajax-getstop.exe/dny?start=1&tpl=suggest2json&REQ0JourneyStopsS0A='+suggestType+'&getstop=1&noSession=yes&REQ0JourneyStopsB=12&REQ0JourneyStopsS0G=';
+}
+currParam.selectCallback = function(par){
+for(var i=0; i < callbackArr.length;i++){
+callbackArr[i](par);
+}
+};
+new FSuggest(currParam);
+}
+}
+/* ]]> */
+</script>
+<script type="text/javascript">
+var gImagePath = '/hafas-res/img/';
+var fsugg_map = '<img src="/hafas-res/img/icon_google_earth.gif">';
+</script>
+<link rel="stylesheet" type="text/css" href="./Saarfahrplan Ankunft _ Abfahrt_files/vgs.css">
+<style type="text/css">
+ul.jmap_slider      { margin:0px;list-style-type:none; padding:0px;  }
+ul.jmap_slider a    { color: black;}
+.additionMapMenu    { background-color: white;
+border: 2px solid #dfdfdf;
+font-size: 11px;
+padding: 0 0 0 4px;
+position: absolute;
+right: 116px;
+top: 4px;
+width: 85px;
+line-height:20px;
+z-index: 200000;    }
+.additionMapMenu a  { color:black;font-weight:bold;}
+.suggestButton      { background-position:2px 3px;background-repeat:no-repeat;background-image:url(/hafas-res/img/icon_calexport.gif);}
+#suggestion div     { background-image:url(/hafas-res/img/suggest_stop.gif);background-repeat:no-repeat;background-position:2px 2px; }
+#suggestion div.train,
+#suggestion div.trainselected   { background-image:url(/hafas-res/img/look/prod_ic.gif); background-repeat:no-repeat; background-position: 3px 1px;}
+#suggestion div.poi,
+#suggestion div.poiselected     { background-image:url(/hafas-res/img/suggest_poi.gif);background-repeat:no-repeat;background-position:2px 2px; }
+#suggestion div.adr,
+#suggestion div.adrselected     { background-image:url(/hafas-res/img/suggest_adr.gif);background-repeat:no-repeat;background-position:2px 2px; }
+#suggestion div.delfi,
+#suggestion div.delfiselected     { background-image:url(/hafas-res/img/suggest_delfi.gif);background-repeat:no-repeat;background-position:5px 3px; }
+#suggestion div.furtherMatches,
+#suggestion div.furtherMatchesselected  { background-image:none;}
+</style>
+<link rel="stylesheet" type="text/css" href="./Saarfahrplan Ankunft _ Abfahrt_files/vgs_suggest.css">
+</head>
+<body>
+<div id="hafas"><a name="top"></a>
+<table class="hafasHeader" cellspacing="0" summary="Kopfbereich">
+<tbody><tr>
+<td class="logo bottom nopadding" style="width:300px;"><a href="http://www.saarfahrplan.de/"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/logo_saarfahrplan.jpg" alt="Saarfahrplan"></a></td>
+<td class="logo bottom nopadding" style="width:400px;"><a href="http://www.vgs-online.de/?p=997"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/logo_saarfahrplan.gif" alt="Saarfahrplan"></a></td>
+<td class="logo bottom nopadding" style="width:auto;"><a href="http://www.vgs-online.de/"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/logo_vgs.jpg" alt="VGS"></a></td>
+<td class="logo bottom nopadding" style="width:171px;"><a href="http://www.saarvv.de/"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/logo_saarvv.jpg" alt="SaarVV"></a></td>
+</tr>
+<tr>
+<td colspan="3" style="background:url(/hafas-res/img/header_line.gif) repeat-x;height:41px;">
+Der Saarfahrplan optimiert für Handy/Smartphone: <a class="headerLink" href="http://mobil.saarfahrplan.de/">mobil.saarfahrplan.de</a>
+</td>
+<td colspan="1" style="background:url(/hafas-res/img/header_line.gif) repeat-x;height:41px;" align="right">
+<b>Hotline: 06898 / 500 4000</b>
+</td>
+</tr>
+</tbody></table>
+<table class="hafasSlider" cellspacing="0" summary="HAFAS-Navigation">
+<tbody><tr>
+<td class="slider"><a href="http://www.saarfahrplan.de/cgi-bin/query.exe/dn?L=public&amp;">Verbindung</a></td>
+<td class="slider"><a href="http://www.saarfahrplan.de/cgi-bin/query.exe/dn?L=public&amp;view=map&amp;SetGlobalOptionGO_mapSearch=ACTIVE&amp;REQMapCenterX=9741016&amp;REQMapCenterY=52376763&amp;REQMapScaling=500000">Karte</a></td>
+<td class="activeslider"><a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;">Ankunft&nbsp;/&nbsp;Abfahrt</a></td>
+<td class="slider"><a href="http://www.saarfahrplan.de/cgi-bin/tb/query-p2w.exe/dn?L=public&amp;whichTask=pf&amp;">Pendlerfahrplan</a></td>
+<td class="slider"><a href="http://www.saarfahrplan.de/cgi-bin/tb/query-p2w.exe/dn?L=public&amp;whichTask=hst&amp;">Haltestellenfahrplan</a></td>
+<td class="slider"><a href="http://www.saarfahrplan.de/cgi-bin/query.exe/dn?L=public&amp;wai=yes&amp;">Textversion</a></td>
+<td class="slider"><a href="http://www.saarfahrplan.de/cgi-bin/eu/query.exe/dn?">International <span class="red">(beta)</span></a></td>
+</tr>
+</tbody></table>
+<table class="hafasHeader" cellspacing="0" summary="Sprachwahl">
+<tbody><tr>
+<td class="changeLanguage borderbottom" style="padding-left:10px;"><a class="activelanguage" href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;newrequest=yes&amp;"><img class="language" src="./Saarfahrplan Ankunft _ Abfahrt_files/flag_germany.gif" border="0" width="16" height="10" alt="Deutsch" title="Deutsch"></a>
+<a class="language" href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/en?L=public&amp;newrequest=yes&amp;"><img class="language" src="./Saarfahrplan Ankunft _ Abfahrt_files/flag_uk.gif" border="0" width="16" height="10" alt="English" title="English"></a>
+<a class="language" href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/fn?L=public&amp;newrequest=yes&amp;"><img class="language" src="./Saarfahrplan Ankunft _ Abfahrt_files/flag_france.gif" border="0" width="16" height="10" alt="Français" title="Français"></a>
+</td></tr>
+</tbody></table>
+<table class="hafasHeader" cellspacing="0" summary="Seitentitel/Hauptüberschrift">
+<tbody><tr>
+<td class="pagetitle">Markt, Heusweiler</td>
+<td class="pagetitle right">Aktueller Abfahrtsplan gültig am 30.10.17 (01:35 - 07:28 Uhr)</td>
+</tr>
+</tbody></table>
+<table class="hafasContentTable" cellspacing="0">
+<tbody><tr>
+<td class="hafasContentTable">
+<div class="separator" style="margin-bottom:1px;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/stress_sep.gif" width="11" height="11" alt="">Ihre Anfrage</div>
+<table class="hafasResult" cellspacing="0">
+<tbody><tr>
+<th class="querysummary">Bhf./Haltest.:</th>
+<td class="querysummary screennowrap">Markt, Heusweiler
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=now&amp;productsFilter=7:1111101&amp;selectDate=today&amp;maxJourneys=15&amp;start=yes#end">(Allgemeine Informationen)</a>
+<a href="http://www.saarfahrplan.de/cgi-bin/query.exe/dn?L=public&amp;view=map&amp;REQMapRoute0.DisplayMode=LOCATION&amp;MapLocation.Scaling=2000&amp;MapLocation.X=6930036&amp;MapLocation.Y=49336765&amp;MapLocation.Name=Markt,%20Heusweiler"><img class="icon" src="./Saarfahrplan Ankunft _ Abfahrt_files/icon_std.gif" width="13" height="13" alt=""> Karte</a>
+</td>
+</tr>
+<tr>
+<th class="querysummary">Fahrplan:</th>
+<td class="querysummary">
+Mo, 30.10.17,
+Abfahrt 01:35
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=now&amp;productsFilter=7:1111101&amp;selectDate=today&amp;maxJourneys=15&amp;start=yes"><img class="icon" src="./Saarfahrplan Ankunft _ Abfahrt_files/icon_std.gif" width="13" height="13" alt=""> aktuell</a>
+</td>
+</tr>
+</tbody></table>
+<div class="separatingLine" style="margin-top:5px;"><hr style="display:none;"></div>
+<table class="hafasButtons" cellspacing="0">
+<tbody><tr>
+<td class="nowrap links"><a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=01:35&amp;maxJourneys=15&amp;dateBegin=&amp;dateEnd=&amp;selectDate=today&amp;productsFilter=7:1111101&amp;editStation=yes&amp;dirInput=&amp;"><img class="icon" src="./Saarfahrplan Ankunft _ Abfahrt_files/icon_std.gif" width="13" height="13" alt=""> Anfrage ändern</a><a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;"><img class="icon" src="./Saarfahrplan Ankunft _ Abfahrt_files/icon_std.gif" width="13" height="13" alt=""> Neue Anfrage</a><a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=arr&amp;time=01:35&amp;maxJourneys=15&amp;dateBegin=&amp;dateEnd=&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;"><img class="icon" src="./Saarfahrplan Ankunft _ Abfahrt_files/icon_std.gif" width="13" height="13" alt=""> Ankunftsplan</a><a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=01:35&amp;maxJourneys=15&amp;dateBegin=&amp;dateEnd=&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;pageViewMode=PRINT&amp;dirInput=&amp;" target="Printview" onclick="openPopup(&#39;about:blank&#39;,&#39;Printview&#39;,20,200,700,600,&#39;001000&#39;);" accesskey="p"><img class="icon" src="./Saarfahrplan Ankunft _ Abfahrt_files/icon_print.gif" width="14" height="14" alt=""> Druckansicht</a></td></tr>
+</tbody></table>
+<div class="separator" style="margin-bottom:1px;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/stress_sep.gif" width="11" height="11" alt="">Abfahrt (01:35 - 07:28)</div>
+<table cellspacing="0" class="hafasResult" style="width: 100%;">
+<tbody><tr>
+<th class="borderright">Zeit</th>
+<th class="borderright">Fahrt</th>
+<th class="borderright">In Richtung</th>
+</tr>
+<tr class="depboard-dark">
+<td class="bold center sepline top">04:28</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/129453/68664/852322/383010/80?L=public&amp;backLink=sq&amp;date=30.10.17&amp;time=04:28&amp;sqPf=7:1111101&amp;sqMj=15&amp;sqDa=30.10.17&amp;sqTi=01:35&amp;station_evaId=15537&amp;sqType=dep&amp;station_type=dep&amp;sqEvaId=15537&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=05:17&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=04:28&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Markt, Heusweiler
+</a>
+04:28
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15529&amp;boardType=dep&amp;time=04:29&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Schulzentrum, Heusweiler
+</a>
+04:29
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17607&amp;boardType=dep&amp;time=04:31&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Mühlenstr., Walpershofen Riegelsberg
+</a>
+04:31
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17600&amp;boardType=dep&amp;time=04:33&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Walpershofen Mitte, Riegelsberg
+</a>
+04:33
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10511&amp;boardType=dep&amp;time=04:54&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Rastpfuhl, Saarbrücken Malstatt
+</a>
+04:54
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10603&amp;boardType=dep&amp;time=05:01&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Trierer Str., Saarbrücken
+</a>
+05:01
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10600&amp;boardType=dep&amp;time=05:03&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Hauptbahnhof, Saarbrücken
+</a>
+05:03
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10619&amp;boardType=dep&amp;time=05:06&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Johanneskirche, Saarbrücken
+</a>
+05:06
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10602&amp;boardType=dep&amp;time=05:13&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Römerkastell, Saarbrücken
+</a>
+05:13
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=05:17&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach Bf, Saarbrücken
+</a>
+05:17
+</td>
+</tr>
+<tr class="depboard-light">
+<td class="bold center sepline top">04:58</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/943080/339873/846620/108951/80?L=public&amp;backLink=sq&amp;date=30.10.17&amp;time=04:58&amp;sqPf=7:1111101&amp;sqMj=15&amp;sqDa=30.10.17&amp;sqTi=01:35&amp;station_evaId=15537&amp;sqType=dep&amp;station_type=dep&amp;sqEvaId=15537&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=05:47&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=04:58&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Markt, Heusweiler
+</a>
+04:58
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15529&amp;boardType=dep&amp;time=04:59&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Schulzentrum, Heusweiler
+</a>
+04:59
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17607&amp;boardType=dep&amp;time=05:01&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Mühlenstr., Walpershofen Riegelsberg
+</a>
+05:01
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17600&amp;boardType=dep&amp;time=05:03&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Walpershofen Mitte, Riegelsberg
+</a>
+05:03
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10511&amp;boardType=dep&amp;time=05:24&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Rastpfuhl, Saarbrücken Malstatt
+</a>
+05:24
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10603&amp;boardType=dep&amp;time=05:31&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Trierer Str., Saarbrücken
+</a>
+05:31
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10600&amp;boardType=dep&amp;time=05:33&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Hauptbahnhof, Saarbrücken
+</a>
+05:33
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10619&amp;boardType=dep&amp;time=05:36&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Johanneskirche, Saarbrücken
+</a>
+05:36
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10602&amp;boardType=dep&amp;time=05:43&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Römerkastell, Saarbrücken
+</a>
+05:43
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=05:47&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach Bf, Saarbrücken
+</a>
+05:47
+</td>
+</tr>
+<tr class="depboard-dark">
+<td class="bold center sepline top">05:28</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/286179/120906/42422/74184/80?L=public&amp;backLink=sq&amp;date=30.10.17&amp;time=05:28&amp;sqPf=7:1111101&amp;sqMj=15&amp;sqDa=30.10.17&amp;sqTi=01:35&amp;station_evaId=15537&amp;sqType=dep&amp;station_type=dep&amp;sqEvaId=15537&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=06:17&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=05:28&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Markt, Heusweiler
+</a>
+05:28
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15529&amp;boardType=dep&amp;time=05:29&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Schulzentrum, Heusweiler
+</a>
+05:29
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17607&amp;boardType=dep&amp;time=05:31&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Mühlenstr., Walpershofen Riegelsberg
+</a>
+05:31
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17600&amp;boardType=dep&amp;time=05:33&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Walpershofen Mitte, Riegelsberg
+</a>
+05:33
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10511&amp;boardType=dep&amp;time=05:54&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Rastpfuhl, Saarbrücken Malstatt
+</a>
+05:54
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10603&amp;boardType=dep&amp;time=06:01&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Trierer Str., Saarbrücken
+</a>
+06:01
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10600&amp;boardType=dep&amp;time=06:03&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Hauptbahnhof, Saarbrücken
+</a>
+06:03
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10619&amp;boardType=dep&amp;time=06:06&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Johanneskirche, Saarbrücken
+</a>
+06:06
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10602&amp;boardType=dep&amp;time=06:13&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Römerkastell, Saarbrücken
+</a>
+06:13
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=06:17&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach Bf, Saarbrücken
+</a>
+06:17
+</td>
+</tr>
+<tr class="depboard-light">
+<td class="bold center sepline top">05:43</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/521034/199237/50746/148305/80?L=public&amp;backLink=sq&amp;date=30.10.17&amp;time=05:43&amp;sqPf=7:1111101&amp;sqMj=15&amp;sqDa=30.10.17&amp;sqTi=01:35&amp;station_evaId=15537&amp;sqType=dep&amp;station_type=dep&amp;sqEvaId=15537&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=06:32&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=05:43&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Markt, Heusweiler
+</a>
+05:43
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15529&amp;boardType=dep&amp;time=05:44&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Schulzentrum, Heusweiler
+</a>
+05:44
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17607&amp;boardType=dep&amp;time=05:46&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Mühlenstr., Walpershofen Riegelsberg
+</a>
+05:46
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17600&amp;boardType=dep&amp;time=05:48&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Walpershofen Mitte, Riegelsberg
+</a>
+05:48
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10511&amp;boardType=dep&amp;time=06:09&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Rastpfuhl, Saarbrücken Malstatt
+</a>
+06:09
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10603&amp;boardType=dep&amp;time=06:16&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Trierer Str., Saarbrücken
+</a>
+06:16
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10600&amp;boardType=dep&amp;time=06:18&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Hauptbahnhof, Saarbrücken
+</a>
+06:18
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10619&amp;boardType=dep&amp;time=06:21&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Johanneskirche, Saarbrücken
+</a>
+06:21
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10602&amp;boardType=dep&amp;time=06:28&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Römerkastell, Saarbrücken
+</a>
+06:28
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=06:32&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach Bf, Saarbrücken
+</a>
+06:32
+</td>
+</tr>
+<tr class="depboard-dark">
+<td class="bold center sepline top">05:57</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/12042/29497/278132/135052/80?L=public&amp;backLink=sq&amp;date=30.10.17&amp;time=05:57&amp;sqPf=7:1111101&amp;sqMj=15&amp;sqDa=30.10.17&amp;sqTi=01:35&amp;station_evaId=15537&amp;sqType=dep&amp;station_type=dep&amp;sqEvaId=15537&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8000563&amp;boardType=dep&amp;time=06:13&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Lebach
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=05:57&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Markt, Heusweiler
+</a>
+05:57
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15536&amp;boardType=dep&amp;time=05:59&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+In der Hommersbach, Heusweiler
+</a>
+05:59
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15541&amp;boardType=dep&amp;time=06:00&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Kirschhof, Heusweiler
+</a>
+06:00
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15420&amp;boardType=dep&amp;time=06:02&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Eiweiler, Heusweiler
+</a>
+06:02
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15421&amp;boardType=dep&amp;time=06:04&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Eiweiler Nord, Heusweiler
+</a>
+06:04
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=42208&amp;boardType=dep&amp;time=06:07&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Landsweiler Süd, Lebach
+</a>
+06:07
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=42207&amp;boardType=dep&amp;time=06:08&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Landsweiler Nord, Lebach
+</a>
+06:08
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=41529&amp;boardType=dep&amp;time=06:10&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Lebach Süd
+</a>
+06:10
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8000563&amp;boardType=dep&amp;time=06:13&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Lebach
+</a>
+06:13
+</td>
+</tr>
+<tr class="depboard-light">
+<td class="bold center sepline top">05:58</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/46854/41168/457542/213153/80?L=public&amp;backLink=sq&amp;date=30.10.17&amp;time=05:58&amp;sqPf=7:1111101&amp;sqMj=15&amp;sqDa=30.10.17&amp;sqTi=01:35&amp;station_evaId=15537&amp;sqType=dep&amp;station_type=dep&amp;sqEvaId=15537&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=06:47&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=05:58&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Markt, Heusweiler
+</a>
+05:58
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15529&amp;boardType=dep&amp;time=05:59&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Schulzentrum, Heusweiler
+</a>
+05:59
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17607&amp;boardType=dep&amp;time=06:01&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Mühlenstr., Walpershofen Riegelsberg
+</a>
+06:01
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17600&amp;boardType=dep&amp;time=06:03&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Walpershofen Mitte, Riegelsberg
+</a>
+06:03
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10511&amp;boardType=dep&amp;time=06:24&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Rastpfuhl, Saarbrücken Malstatt
+</a>
+06:24
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10603&amp;boardType=dep&amp;time=06:31&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Trierer Str., Saarbrücken
+</a>
+06:31
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10600&amp;boardType=dep&amp;time=06:33&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Hauptbahnhof, Saarbrücken
+</a>
+06:33
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10619&amp;boardType=dep&amp;time=06:36&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Johanneskirche, Saarbrücken
+</a>
+06:36
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10602&amp;boardType=dep&amp;time=06:43&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Römerkastell, Saarbrücken
+</a>
+06:43
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=06:47&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach Bf, Saarbrücken
+</a>
+06:47
+</td>
+</tr>
+<tr class="depboard-dark">
+<td class="bold center sepline top">06:13</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/237444/104707/31186/63556/80?L=public&amp;backLink=sq&amp;date=30.10.17&amp;time=06:13&amp;sqPf=7:1111101&amp;sqMj=15&amp;sqDa=30.10.17&amp;sqTi=01:35&amp;station_evaId=15537&amp;sqType=dep&amp;station_type=dep&amp;sqEvaId=15537&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=07:02&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=06:13&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Markt, Heusweiler
+</a>
+06:13
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15529&amp;boardType=dep&amp;time=06:14&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Schulzentrum, Heusweiler
+</a>
+06:14
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17607&amp;boardType=dep&amp;time=06:16&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Mühlenstr., Walpershofen Riegelsberg
+</a>
+06:16
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17600&amp;boardType=dep&amp;time=06:18&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Walpershofen Mitte, Riegelsberg
+</a>
+06:18
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10511&amp;boardType=dep&amp;time=06:39&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Rastpfuhl, Saarbrücken Malstatt
+</a>
+06:39
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10603&amp;boardType=dep&amp;time=06:46&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Trierer Str., Saarbrücken
+</a>
+06:46
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10600&amp;boardType=dep&amp;time=06:48&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Hauptbahnhof, Saarbrücken
+</a>
+06:48
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10619&amp;boardType=dep&amp;time=06:51&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Johanneskirche, Saarbrücken
+</a>
+06:51
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10602&amp;boardType=dep&amp;time=06:58&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Römerkastell, Saarbrücken
+</a>
+06:58
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=07:02&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach Bf, Saarbrücken
+</a>
+07:02
+</td>
+</tr>
+<tr class="depboard-light">
+<td class="bold center sepline top">06:27</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/588858/221769/225970/83302/80?L=public&amp;backLink=sq&amp;date=30.10.17&amp;time=06:27&amp;sqPf=7:1111101&amp;sqMj=15&amp;sqDa=30.10.17&amp;sqTi=01:35&amp;station_evaId=15537&amp;sqType=dep&amp;station_type=dep&amp;sqEvaId=15537&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8000563&amp;boardType=dep&amp;time=06:43&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Lebach
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=06:27&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Markt, Heusweiler
+</a>
+06:27
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15536&amp;boardType=dep&amp;time=06:29&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+In der Hommersbach, Heusweiler
+</a>
+06:29
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15541&amp;boardType=dep&amp;time=06:30&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Kirschhof, Heusweiler
+</a>
+06:30
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15420&amp;boardType=dep&amp;time=06:32&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Eiweiler, Heusweiler
+</a>
+06:32
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15421&amp;boardType=dep&amp;time=06:34&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Eiweiler Nord, Heusweiler
+</a>
+06:34
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=42208&amp;boardType=dep&amp;time=06:37&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Landsweiler Süd, Lebach
+</a>
+06:37
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=42207&amp;boardType=dep&amp;time=06:38&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Landsweiler Nord, Lebach
+</a>
+06:38
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=41529&amp;boardType=dep&amp;time=06:40&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Lebach Süd
+</a>
+06:40
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8000563&amp;boardType=dep&amp;time=06:43&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Lebach
+</a>
+06:43
+</td>
+</tr>
+<tr class="depboard-dark">
+<td class="bold center sepline top">06:28</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/659631/245427/25620/207068/80?L=public&amp;backLink=sq&amp;date=30.10.17&amp;time=06:28&amp;sqPf=7:1111101&amp;sqMj=15&amp;sqDa=30.10.17&amp;sqTi=01:35&amp;station_evaId=15537&amp;sqType=dep&amp;station_type=dep&amp;sqEvaId=15537&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=07:17&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=06:28&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Markt, Heusweiler
+</a>
+06:28
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15529&amp;boardType=dep&amp;time=06:29&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Schulzentrum, Heusweiler
+</a>
+06:29
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17607&amp;boardType=dep&amp;time=06:31&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Mühlenstr., Walpershofen Riegelsberg
+</a>
+06:31
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17600&amp;boardType=dep&amp;time=06:33&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Walpershofen Mitte, Riegelsberg
+</a>
+06:33
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10511&amp;boardType=dep&amp;time=06:54&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Rastpfuhl, Saarbrücken Malstatt
+</a>
+06:54
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10603&amp;boardType=dep&amp;time=07:01&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Trierer Str., Saarbrücken
+</a>
+07:01
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10600&amp;boardType=dep&amp;time=07:03&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Hauptbahnhof, Saarbrücken
+</a>
+07:03
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10619&amp;boardType=dep&amp;time=07:06&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Johanneskirche, Saarbrücken
+</a>
+07:06
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10602&amp;boardType=dep&amp;time=07:13&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Römerkastell, Saarbrücken
+</a>
+07:13
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=07:17&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach Bf, Saarbrücken
+</a>
+07:17
+</td>
+</tr>
+<tr class="depboard-light">
+<td class="bold center sepline top">06:43</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/342762/139813/862598/317047/80?L=public&amp;backLink=sq&amp;date=30.10.17&amp;time=06:43&amp;sqPf=7:1111101&amp;sqMj=15&amp;sqDa=30.10.17&amp;sqTi=01:35&amp;station_evaId=15537&amp;sqType=dep&amp;station_type=dep&amp;sqEvaId=15537&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=07:32&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=06:43&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Markt, Heusweiler
+</a>
+06:43
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15529&amp;boardType=dep&amp;time=06:44&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Schulzentrum, Heusweiler
+</a>
+06:44
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17607&amp;boardType=dep&amp;time=06:46&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Mühlenstr., Walpershofen Riegelsberg
+</a>
+06:46
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17600&amp;boardType=dep&amp;time=06:48&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Walpershofen Mitte, Riegelsberg
+</a>
+06:48
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10511&amp;boardType=dep&amp;time=07:09&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Rastpfuhl, Saarbrücken Malstatt
+</a>
+07:09
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10603&amp;boardType=dep&amp;time=07:16&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Trierer Str., Saarbrücken
+</a>
+07:16
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10600&amp;boardType=dep&amp;time=07:18&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Hauptbahnhof, Saarbrücken
+</a>
+07:18
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10619&amp;boardType=dep&amp;time=07:21&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Johanneskirche, Saarbrücken
+</a>
+07:21
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10602&amp;boardType=dep&amp;time=07:28&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Römerkastell, Saarbrücken
+</a>
+07:28
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=07:32&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach Bf, Saarbrücken
+</a>
+07:32
+</td>
+</tr>
+<tr class="depboard-dark">
+<td class="bold center sepline top">06:57</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/762516/279652/112568/197888/80?L=public&amp;backLink=sq&amp;date=30.10.17&amp;time=06:57&amp;sqPf=7:1111101&amp;sqMj=15&amp;sqDa=30.10.17&amp;sqTi=01:35&amp;station_evaId=15537&amp;sqType=dep&amp;station_type=dep&amp;sqEvaId=15537&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8007868&amp;boardType=dep&amp;time=07:17&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Lebach-Jabach
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=06:57&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Markt, Heusweiler
+</a>
+06:57
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15536&amp;boardType=dep&amp;time=06:59&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+In der Hommersbach, Heusweiler
+</a>
+06:59
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15541&amp;boardType=dep&amp;time=07:00&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Kirschhof, Heusweiler
+</a>
+07:00
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15420&amp;boardType=dep&amp;time=07:02&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Eiweiler, Heusweiler
+</a>
+07:02
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15421&amp;boardType=dep&amp;time=07:04&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Eiweiler Nord, Heusweiler
+</a>
+07:04
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=42208&amp;boardType=dep&amp;time=07:07&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Landsweiler Süd, Lebach
+</a>
+07:07
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=42207&amp;boardType=dep&amp;time=07:08&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Landsweiler Nord, Lebach
+</a>
+07:08
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=41529&amp;boardType=dep&amp;time=07:10&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Lebach Süd
+</a>
+07:10
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8000563&amp;boardType=dep&amp;time=07:15&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Lebach
+</a>
+07:15
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8007868&amp;boardType=dep&amp;time=07:17&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Lebach-Jabach
+</a>
+07:17
+</td>
+</tr>
+<tr class="depboard-light">
+<td class="bold center sepline top">06:58</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/640221/238957/749750/161470/80?L=public&amp;backLink=sq&amp;date=30.10.17&amp;time=06:58&amp;sqPf=7:1111101&amp;sqMj=15&amp;sqDa=30.10.17&amp;sqTi=01:35&amp;station_evaId=15537&amp;sqType=dep&amp;station_type=dep&amp;sqEvaId=15537&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=07:47&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=06:58&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Markt, Heusweiler
+</a>
+06:58
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15529&amp;boardType=dep&amp;time=06:59&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Schulzentrum, Heusweiler
+</a>
+06:59
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17607&amp;boardType=dep&amp;time=07:01&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Mühlenstr., Walpershofen Riegelsberg
+</a>
+07:01
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17600&amp;boardType=dep&amp;time=07:03&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Walpershofen Mitte, Riegelsberg
+</a>
+07:03
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10511&amp;boardType=dep&amp;time=07:24&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Rastpfuhl, Saarbrücken Malstatt
+</a>
+07:24
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10603&amp;boardType=dep&amp;time=07:31&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Trierer Str., Saarbrücken
+</a>
+07:31
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10600&amp;boardType=dep&amp;time=07:33&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Hauptbahnhof, Saarbrücken
+</a>
+07:33
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10619&amp;boardType=dep&amp;time=07:36&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Johanneskirche, Saarbrücken
+</a>
+07:36
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10602&amp;boardType=dep&amp;time=07:43&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Römerkastell, Saarbrücken
+</a>
+07:43
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=07:47&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach Bf, Saarbrücken
+</a>
+07:47
+</td>
+</tr>
+<tr class="depboard-dark">
+<td class="bold center sepline top">07:13</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/1038/25905/951498/475406/80?L=public&amp;backLink=sq&amp;date=30.10.17&amp;time=07:13&amp;sqPf=7:1111101&amp;sqMj=15&amp;sqDa=30.10.17&amp;sqTi=01:35&amp;station_evaId=15537&amp;sqType=dep&amp;station_type=dep&amp;sqEvaId=15537&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=08:02&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=07:13&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Markt, Heusweiler
+</a>
+07:13
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15529&amp;boardType=dep&amp;time=07:14&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Schulzentrum, Heusweiler
+</a>
+07:14
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17607&amp;boardType=dep&amp;time=07:16&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Mühlenstr., Walpershofen Riegelsberg
+</a>
+07:16
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17600&amp;boardType=dep&amp;time=07:18&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Walpershofen Mitte, Riegelsberg
+</a>
+07:18
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10511&amp;boardType=dep&amp;time=07:39&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Rastpfuhl, Saarbrücken Malstatt
+</a>
+07:39
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10603&amp;boardType=dep&amp;time=07:46&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Trierer Str., Saarbrücken
+</a>
+07:46
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10600&amp;boardType=dep&amp;time=07:48&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Hauptbahnhof, Saarbrücken
+</a>
+07:48
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10619&amp;boardType=dep&amp;time=07:51&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Johanneskirche, Saarbrücken
+</a>
+07:51
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10602&amp;boardType=dep&amp;time=07:58&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Römerkastell, Saarbrücken
+</a>
+07:58
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=08:02&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach Bf, Saarbrücken
+</a>
+08:02
+</td>
+</tr>
+<tr class="depboard-light">
+<td class="bold center sepline top">07:27</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/420720/165699/987978/353749/80?L=public&amp;backLink=sq&amp;date=30.10.17&amp;time=07:27&amp;sqPf=7:1111101&amp;sqMj=15&amp;sqDa=30.10.17&amp;sqTi=01:35&amp;station_evaId=15537&amp;sqType=dep&amp;station_type=dep&amp;sqEvaId=15537&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8007868&amp;boardType=dep&amp;time=07:45&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Lebach-Jabach
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=07:27&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Markt, Heusweiler
+</a>
+07:27
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15536&amp;boardType=dep&amp;time=07:29&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+In der Hommersbach, Heusweiler
+</a>
+07:29
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15541&amp;boardType=dep&amp;time=07:30&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Kirschhof, Heusweiler
+</a>
+07:30
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15420&amp;boardType=dep&amp;time=07:32&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Eiweiler, Heusweiler
+</a>
+07:32
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15421&amp;boardType=dep&amp;time=07:34&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Eiweiler Nord, Heusweiler
+</a>
+07:34
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=42208&amp;boardType=dep&amp;time=07:37&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Landsweiler Süd, Lebach
+</a>
+07:37
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=42207&amp;boardType=dep&amp;time=07:38&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Landsweiler Nord, Lebach
+</a>
+07:38
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=41529&amp;boardType=dep&amp;time=07:40&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Lebach Süd
+</a>
+07:40
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8000563&amp;boardType=dep&amp;time=07:43&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Lebach
+</a>
+07:43
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8007868&amp;boardType=dep&amp;time=07:45&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Lebach-Jabach
+</a>
+07:45
+</td>
+</tr>
+<tr class="depboard-dark">
+<td class="bold center sepline top">07:28</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/615396/230682/300948/54661/80?L=public&amp;backLink=sq&amp;date=30.10.17&amp;time=07:28&amp;sqPf=7:1111101&amp;sqMj=15&amp;sqDa=30.10.17&amp;sqTi=01:35&amp;station_evaId=15537&amp;sqType=dep&amp;station_type=dep&amp;sqEvaId=15537&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=08:17&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=07:28&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Markt, Heusweiler
+</a>
+07:28
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15529&amp;boardType=dep&amp;time=07:29&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Schulzentrum, Heusweiler
+</a>
+07:29
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17607&amp;boardType=dep&amp;time=07:31&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Mühlenstr., Walpershofen Riegelsberg
+</a>
+07:31
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=17600&amp;boardType=dep&amp;time=07:33&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Walpershofen Mitte, Riegelsberg
+</a>
+07:33
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10511&amp;boardType=dep&amp;time=07:54&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Rastpfuhl, Saarbrücken Malstatt
+</a>
+07:54
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10603&amp;boardType=dep&amp;time=08:01&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Trierer Str., Saarbrücken
+</a>
+08:01
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10600&amp;boardType=dep&amp;time=08:03&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Hauptbahnhof, Saarbrücken
+</a>
+08:03
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10619&amp;boardType=dep&amp;time=08:06&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Johanneskirche, Saarbrücken
+</a>
+08:06
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=10602&amp;boardType=dep&amp;time=08:13&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Römerkastell, Saarbrücken
+</a>
+08:13
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=8001135&amp;boardType=dep&amp;time=08:17&amp;maxJourneys=15&amp;productsFilter=7:1111101&amp;">
+Brebach Bf, Saarbrücken
+</a>
+08:17
+</td>
+</tr>
+<tr>
+<td class="small sepline">&nbsp;</td>
+<td class="small sepline">&nbsp;</td>
+<td class="small sepline">
+Anzeige aller Halte bis zu diesem Zeichen •, dahinter Anzeige der wichtigsten Halte.
+</td>
+</tr>
+</tbody></table>
+<table class="hafasButtons" cellspacing="0">
+<tbody><tr>
+<td class="links">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=07:28%2B1&amp;productsFilter=7:1111101&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;maxJourneys=15&amp;&amp;start=yes&amp;dirInput=&amp;"><b><img class="icon" src="./Saarfahrplan Ankunft _ Abfahrt_files/icon_std.gif" width="13" height="13" alt=""> Weitere Fahrten</b></a>
+</td>
+<td class="links">
+Für weitere Fahrplaninformationen wählen Sie bitte Ihre gewünschte Uhrzeit:
+<select name="selectTime" onchange="window.location.replace(this.options[this.selectedIndex].value)">
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=00:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">00:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=01:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">01:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=02:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">02:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=03:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">03:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=04:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">04:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=05:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">05:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=06:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">06:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=07:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">07:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=08:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">08:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=09:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">09:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=10:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">10:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=11:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">11:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=12:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">12:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=13:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">13:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=14:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">14:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=15:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">15:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=16:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">16:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=17:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">17:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=18:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">18:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=19:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">19:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=20:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">20:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=21:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">21:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=22:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">22:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15537&amp;boardType=dep&amp;time=23:00&amp;maxJourneys=15&amp;dateBegin=30.10.17&amp;dateEnd=30.10.17&amp;selectDate=today&amp;productsFilter=7:1111101&amp;start=yes&amp;dirInput=&amp;">23:00</option>
+</select>
+</td>
+</tr>
+</tbody></table>
+<div class="separator" style="margin-top:10px; margin-bottom:1px;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/stress_sep.gif" width="11" height="11" alt="">Markt, Heusweiler - Allgemeine Informationen</div>
+<a name="end"></a>
+<table cellspacing="0" class="hafasResult">
+<tbody><tr>
+<td valign="top">
+<span class="bold">Haltestellen in Fußwegnähe:</span>
+<br>
+- <a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=115500&amp;boardType=dep&amp;time=now&amp;productsFilter=7:1111101&amp;">Rathaus, Heusweiler</a> (ca. 3 Minuten)
+<br>
+- <a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=115502&amp;boardType=dep&amp;time=now&amp;productsFilter=7:1111101&amp;">Kath. Kirche, Heusweiler</a> (ca. 13 Minuten)
+<br>
+- <a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15510&amp;boardType=dep&amp;time=now&amp;productsFilter=7:1111101&amp;">Dilsburg Brücke, Heusweiler</a> (ca. 11 Minuten)
+<br>
+- <a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15538&amp;boardType=dep&amp;time=now&amp;productsFilter=7:1111101&amp;">Dilsburg Ludwigstr., Heusweiler</a> (ca. 14 Minuten)
+<br>
+- <a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15501&amp;boardType=dep&amp;time=now&amp;productsFilter=7:1111101&amp;">Illinger Str., Heusweiler</a> (ca. 8 Minuten)
+<br>
+- <a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15507&amp;boardType=dep&amp;time=now&amp;productsFilter=7:1111101&amp;">Kirchstr., Heusweiler</a> (ca. 8 Minuten)
+<br>
+- <a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?L=public&amp;input=15516&amp;boardType=dep&amp;time=now&amp;productsFilter=7:1111101&amp;">Ev. Kirche, Heusweiler</a> (ca. 7 Minuten)
+<br>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<table class="hafasFooter" cellspacing="0" summary="Fußbereich">
+<tbody><tr>
+<td>
+Reiseinformationen gültig vom 11.12.16 bis 09.12.17.
+<br>
+Software/Daten: HAFAS 5.42.STANDARD.4.7/5.42.STANDARD.5.0.1 - 30.10.17
+<br>
+© 2017
+<a href="http://www.vgs-online.de/">VGS mbH</a>,&nbsp;
+<a href="http://www.hacon.de/hacon/index.shtml">HaCon Ingenieurgesellschaft mbH</a>.
+Alle Angaben ohne Gewähr.
+<a href="http://www.saarfahrplan.de/cgi-bin/help.exe/dn?tpl=imprint&amp;" target="imprint" onclick="openPopup(&#39;about:blank&#39;,&#39;imprint&#39;,200,200,325,275,&#39;000000&#39;)">Impressum</a>
+<br>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+</body></html>

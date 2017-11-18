@@ -1,0 +1,335 @@
+#suggestion{
+    font-size:12px;
+    position:absolute;
+    max-height:160px;
+    height:auto;
+    min-width:180px;
+    width:200px;
+    overflow:auto;
+    overflow-x:hidden;
+    overflow-y:auto;
+    padding:0;
+    background-color:#FFF;
+    border:1px solid black;
+    margin-top:3px;
+}
+
+.hfsSuggestMap{
+  position:absolute;
+  height:307px;
+  width:300px;
+  display:block;
+  overflow:hidden;
+  z-index:20000000;
+  background-color:#F2F2F2;
+}
+
+.hfsSuggestMapTitle{
+   height:15px;
+   width:300px;
+   background-color:#5D5D5D;
+   color:#fff;
+   font-size:11px;
+}
+
+
+#suggestion div.mapLink{
+    background:none;
+}
+
+#suggestProducts,
+#suggestRidesPerYear {
+    padding:8px;
+}
+
+#suggestProducts span img {
+    height:21px;
+    width:21px;
+    margin:0px 3px;
+}
+
+#suggestProducts span.inactive img {
+    opacity:0.2;
+    filter:alpha(opacity=20);
+}
+
+#minimap{
+    display:block;
+    overflow:hidden;
+    border:1px solid #333333
+}
+
+#waiting{
+    padding-left:10px;
+    margin-left:10px;
+    width:30px;
+    height:30px;
+    background-repeat:no-repeat;
+}
+
+#suggestion div.infoLabel, #suggestion div.infoLabel {
+    background:none; border-bottom:1px solid #d4d4d4;
+}
+
+#suggestion div.suggContent{
+    background: none;
+    font-size:11px;
+    padding:0;
+}
+
+#suggestion div.furtherMatchesselected{
+    color: white; text-decoration:underline;
+}
+#suggestion div.furtherMatchesselected{
+    background-color:black;color:white;
+}
+
+#suggestion div.furtherMatches{
+    color:#ffffff;
+}
+
+
+div#suggestion div.adrselected,div#suggestion div.poiselected,
+div#suggestion div.trainselected{
+    background-color:#33992B !important;color:white;
+}
+
+#suggestion div.infoLabelselected{
+    background-color:blue;
+}
+
+.suggestTooltip{
+    height:auto;position:absolute;z-index:2000000;background:#efefef;border:1px solid #333333;
+    padding:3px;display:none;opacity:0;
+}
+
+.s-tooltip{
+    top:10px;left:0px;padding:5px;color:white;padding-top:1px;margin-top:3px;
+}
+
+#suggestion div.furtherMatches, #suggestion div.furtherMatchesselected{
+    margin-left:0px;
+    background-color: #5d5d5d;
+    padding:2px;
+    padding-left:4px;
+    padding-top:2px
+}
+
+#note{
+   padding-top:20px !important;
+}
+
+#suggestion div{
+    padding-top:2px;
+    padding-bottom:2px;
+    padding-left:25px;
+    white-space:nowrap;
+    font-size:.9em;
+    cursor:pointer;
+    margin-left:0px;
+}
+
+#suggestion .selected, #suggestion .delfiselected{
+    background-color:#33992B !important;color:white;
+}
+
+#HFS img.suggicon{
+    vertical-align:top;
+}
+
+.suggestButton{
+    height:20px;
+    border:none;
+    margin-left:-2px;
+    width:20px;
+    cursor:pointer;
+    background-color:transparent;
+}
+
+#more{
+/*   background-image:url(../img/mobile/delayNormal.png);*/
+}
+
+/* alltype suggest definitions */
+#yes,#stopinfo,#no{
+   margin-top:3px;
+   margin-bottom:3px;
+   border-top: 1px solid #006669;
+   border-bottom: 1px solid #006669;
+   padding:2px;
+   background-color:#054F16;
+   width:470px;
+   color: white;
+}
+#stopinfo{
+   background-color: #DF7237;
+}
+
+#no{
+   background-color:#AF0C00;
+}
+
+#stopinfo a,#stopinfo a:hover,#yes a,#yes a:hover, #no a,#no a:hover{
+   color:white;
+}
+#yes a:hover,#stopinfo a:hover,#no a:hover{
+   font-weight:bold;
+}
+
+#newroute{
+   min-height:20px;
+}
+
+.tab, .tabactive{
+   float:left;
+   width:auto;
+
+   padding:5px;
+   font-weight:bold;
+}
+
+.tabactive{
+   background-color:#006669;
+   font-weight:bold;
+   color:white;
+}
+
+.tabactive:hover,.tab:hover{
+   background-color:#FFFFAA;
+   font-weight:bold;
+   color:#333;
+
+   cursor:pointer;
+}
+
+.contentCell{
+   background-color: #efefef;
+   width:400px;
+   min-height:20px;
+
+   padding:3px;
+}
+
+.tabsMenu{
+   margin-bottom:10px;
+}
+
+#contentWindow{
+   padding-top:29px;
+}
+
+#allinonesearch{
+   display:none;
+}
+
+.infobox{
+   border: 1px dotted rgb(51, 51, 51); margin: 10px; padding: 5px;
+   background-color: #DFDAC3;
+/*   background-image:url(../img/icon_arrow_2_hover.gif);*/
+}
+
+#resultWindow,#embedWindow{
+   width:397px;
+   padding:4px;
+}
+
+#genHTMLbutton{
+  background-color:#333;
+  color:#fff;
+  cursor:pointer;
+  padding:2px;
+
+  font-size:12px;
+  border:1px solid white;
+}
+#genHTMLbutton:focus{
+  color:#333;
+}
+
+#embedWindow{
+  background-color:#DFDFDF;
+  min-height:15px;
+}
+
+#mapResult{
+  padding-left:260px;
+  font-size:11px;
+}
+
+.highlight{
+   font-weight:bold;
+}
+
+.topmatches{
+   padding:5px;
+/*   background:transparent url(/hafas-res/std20/img/bg_results_th.png) repeat scroll 0 0;*/
+   color:white;
+}
+
+.match,.matchhover{
+   padding:5px;
+   padding-left:15px;
+/*   background-image:url(/hafas-res/std20/img/icons/icon_arrow_2.gif);
+   background-repeat:no-repeat;
+   background-position:0px 7px;*/
+
+}
+
+#HFS .matchhover{
+/*   background-image:url(/hafas-res/std20/img/icons/icon_arrow_2_hover.gif);*/
+   color:#333333;
+   background-color:#DFDFDF;
+
+}
+
+#HFS .matchhover a,#HFS .matchhover a:hover,{
+   color: #333333;
+   background-color:#DFDFDF;
+
+}
+
+#hintHeader{
+   background-color:#e9e9e9;
+   text-align:right;
+   font-size:11px;
+}
+
+#hintContent{
+   background-color:#E9E9E9;
+   padding:9px;
+
+}
+
+#geomap,#resultMapContainer{
+    display:block;
+    overflow:hidden;
+    border:1px solid #D4D4D4;
+    z-index:20000;
+    background-color:#e9e9e9;
+    padding:9px;
+}
+#geomap{
+    padding:0px;
+    border:1px solid #000000;
+}
+
+#waiting{
+    padding-left:10px;
+    margin-left:10px;
+    width:33px;
+    position:absolute;
+    font-size = 4px;
+    z-index:20000;
+    color:#B8C6D6;
+}
+
+#hints{
+    z-index:200000;
+    border:1px solid #D4D4D4;
+}
+
+
+
+
+
+

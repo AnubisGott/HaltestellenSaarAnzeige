@@ -1,0 +1,311 @@
+body                      {margin:10px; background-color:#fff;position:relative;}
+body.popup                {margin:10px; background-color:#fff;}
+table                     {border:none;}
+th,td,ul,ol,li,p,div,span,input,textarea,select
+{font-family: Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif; font-size: 12px; text-decoration: none;}
+div.hint                  {padding: 1px 3px 1px 3px; color:#ADAAAD; background-color:#E6E6E6; text-decoration:none;}
+div.bold                  {font-weight: bold;}
+div.standardpadding       {padding: 1px 3px 1px 3px;}
+div.errormessage          {color:#c00; font-weight:bold;}
+img                       {border:none; vertical-align: middle;}
+img.bottom                {border:none; vertical-align: bottom;}
+img.top                   {border:none; vertical-align: top;}
+img.icon                  {}
+img.language              {}
+input,select              {vertical-align: middle;}
+input.error, select.error {border: inset 2px #c00; background-color:#fdd;}
+input:focus, select:focus {}
+input.button              {background-color:#ddd; color:#000; border:1px #999 solid; padding: 0px 3px 0px 3px; margin-right:3px; vertical-align: middle; font-family: Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif; font-size: 12px; text-decoration: none;}
+input.button:hover        {color:#c00; border: 1px #c00 solid;}
+input.buttonEmphasized    {background-color:#ddd; color:#000000; border:1px #999 solid; padding: 0px 3px 0px 3px; margin-right: 3px; font-weight: bold; vertical-align: middle; font-family: Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif; font-size: 12px; text-decoration: none;}
+input.buttonEmphasized:hover        {border: 1px #c00 solid;}
+a                         {color:#006994; text-decoration: none;}
+a:link                    {color:#006994; text-decoration: none;}
+a:active                  {color:#c00; text-decoration: none;}
+a:hover                   {color:#c00; text-decoration: none;}
+.floatLeft                {float:left;}
+.bold                     {font-weight: bold;}
+.italic                   {font-style: italic;}
+.underline                {text-decoration: underline;}
+.pre                      {font-family: courier;}
+.red                      {color: #f00;}
+.nopadding                {padding: 0px;}
+.standardpadding          {padding: 1px 3px 1px 3px;}
+.errormessage             {color:#c00; font-weight:bold;}
+.hint                     {color:#32992B; background-color:#E6E6E6; text-decoration:none;}
+.small                    {font-size: 11px;}
+.highPriority             {color:#ff0000; font-weight:bold;}
+#hafas                    {width:980px; background-color:#fff;}
+#hafasLeft                {background-color:#fff; position:absolute; top:10px; left: 10px; width:150px; vertical-align:top;}
+#hafasRight               {background-color:#fff; position:absolute; top:10px; left:170px; width:830px; vertical-align:top; padding-right: 10px;}
+table.hafasTariffHeader             {background-color:#fff; }
+
+table.hafasHeader                   {width: 100%; background-color:#fff; }
+.hafasHeader td                     {padding: 0px;}
+.hafasHeader td.logo                {height:54px; background-color:#fff;}
+.hafasHeader td.popupLogo           {height:40px; background-color:#fff;}
+.hafasHeader td.changeLanguage      {height:25px; color:#fff;}
+.hafasHeader td.changeLanguage a    {font-weight: bold; padding-right:10px;}
+.hafasHeader td.changeLanguage a.language               {color:#abcdcd;}
+.hafasHeader td.changeLanguage a.language:hover         {color:#fff;}
+.hafasHeader td.changeLanguage a.activelanguage         {color:#fff;}
+.hafasHeader td.changeLanguage a.activelanguage:hover   {color:#abcdcd;}
+.hafasHeader td.help a              {font-weight: bold; color:#abcdcd;}
+.hafasHeader td.help a:hover        {color:#fff;}
+.hafasHeader td a                   {}
+.hafasHeader td a.headerLink        {color:#066801;font-weight: bold;}
+.hafasHeader td a.language          {color:#32992B;}
+.hafasHeader td a.language:hover    {color:#c00;}
+.hafasHeader td a.activelanguage    {font-weight: bold; color:#32992B;}
+.hafasHeader td a.activelanguage:hover        {font-weight: bold; color:#c00;}
+.hafasHeader td.pagetitle           {line-height:30px; color:#026800; font-size:14px; font-weight: bold; }
+.hafasHeader td.popupPageTitle      {line-height:30px; color:#026800; font-size:14px; font-weight: bold;}
+.hafasHeader td.right               {text-align: right;}
+.hafasHeader td.bottom              {vertical-align: bottom;}
+.hafasHeader td.nopadding           {padding: 0px;}
+.hafasHeader td.borderbottom        {background-color:#ADAAAD; border-top:1px solid #fff;}
+
+table.hafasSlider                   {background-color:#fff;}
+.hafasSlider td                     {white-space: nowrap; font-weight: bold; padding: 3px 5px 3px 5px; border-right: 2px solid #E6E6E6}
+.hafasSlider td a                   {white-space: nowrap; font-weight: bold;}
+.hafasSlider td.slider              {background-color:#808080; color:#ffffff;}
+.hafasSlider td.slider a            {background-color:#808080; color:#ffffff;}
+.hafasSlider td.slider a:hover      {background-color:#808080; color:#98CB92;}
+.hafasSlider td.activeslider        {background-color:#33992B; color:#fff;}
+.hafasSlider td.activeslider a      {background-color:#33992B; color:#fff;}
+.hafasSlider td.activeslider a:hover  {background-color:#33992B; color:#fff;}
+
+table.hafasSliderLeft               {background-color:#fff; width:100%;}
+.hafasSliderLeft td                 {white-space: nowrap; font-weight: bold; padding: 0px;}
+.hafasSliderLeft td a               {white-space: nowrap; font-weight: bold; padding: 3px 5px 3px 5px; display:block;}
+.hafasSliderLeft td.borderbottom    {border-bottom: 1px solid #32992B}
+.hafasSliderLeft td.slider          {background-color:#7bc7dd; color:#001f2f;}
+.hafasSliderLeft td.slider a        {background-color:#7bc7dd; color:#001f2f;}
+.hafasSliderLeft td.slider a:hover  {background-color:#c00; color:#fff;}
+.hafasSliderLeft td.activeslider    {background-color:#32992B; color:#fff;}
+.hafasSliderLeft td.activeslider a  {background-color:#32992B; color:#fff;}
+.hafasSliderLeft td.activeslider a:hover      {background-color:#c00; color:#fff;}
+.hafasSliderLeft td.standardpadding {padding: 1px 3px 1px 3px;}
+
+
+table.hafasQuickFormLeft                      {background-color:#fff; width:100%; margin-top:10px;}
+.hafasQuickFormLeft th                        {background-color:#7bc7dd; color:#001f2f; font-weight: bold; padding:3px 3px 1px 3px; text-align: left; width:60px;}
+.hafasQuickFormLeft td                        {background-color:#7bc7dd; color:#001f2f; padding:3px;}
+.hafasQuickFormLeft td.separator              {background-color:#ADAAAD; color:#fff; font-weight: bold; padding: 1px 3px 1px 3px; padding-top:3px; padding-bottom:3px;}
+.hafasQuickFormLeft td input                  {width:70px;}
+.hafasQuickFormLeft td a                      {white-space: nowrap; background-color:#7bc7dd; color:#001f2f;}
+.hafasQuickFormLeft td a:hover                {white-space: nowrap; color:#c00;}
+table.hafasContentTable             {border:1px solid #ADAAAD; border-top: 0px; width: 100%; background-color:#FFFFFF;}
+td.hafasContentTable                {padding:10px;}
+td.hafasContentTable p              {padding: 1px 3px 1px 3px;}
+div.hafasHint                       {border:1px solid #ADAAAD; border-bottom:0px; background-color:#FFFFFF;padding:10px; padding-bottom:0px;}
+div.hafasHint div                   {border: 1px solid #ADAAAD; padding: 4px;}
+table.separator1                    {background-color:#33992B; width: 100%;}
+table.separator1 td                 {font-weight: bold; vertical-align: middle; color:#ffffff; white-space: nowrap; padding: 1px 3px 1px 3px; background-color:#33992B;}
+.separator1 td.right                {text-align: right;}
+.separator1 td a                    {color:#ffffff; text-decoration: none;}
+.separator1 td a:hover              {color:#cc0000; text-decoration: none;}
+div.separator                       {background-color:#ADAAAD; display:block; font-weight: bold; vertical-align: middle; color:#001f2f; white-space: nowrap; padding: 1px 3px 1px 3px;}
+td.separator_PS div.separator       {background-color:#B2D8AF;}
+div.separator a                     {color:#001f2f; text-decoration: none;}
+div.separator a:hover               {color:#c00; text-decoration: none;}
+div.separatingLine                  {height:1px; background-color:#999;}
+div.separatingLineRealtime          {height:5px; background-color:#c00;}
+table.hafasButtons                  {margin-bottom:10px;}
+.hafasButtons th.profile            {padding-left:25px; padding-right:8px;}
+table.hafasButtons td               {padding: 2px 5px 5px 0px;}
+.hafasButtons td.nowrap             {white-space: nowrap;}
+.hafasButtons td.links              {padding: 0px 5px 0px 0px;}
+.hafasButtons td.right              {text-align: right;}
+.hafasButtons td a                  {margin-right:10px; white-space: nowrap;}
+.hafasButtons td.right a            {margin-right:0px; margin-left:10px;}
+table.hafasQuery                    {width: auto; background-color:#fff;}
+.hafasQuery th                      {background-color:#FFFFFF; color:#000; padding: 1px 3px 1px 3px; font-weight: bold; text-align: left; white-space: nowrap; width:90px;}
+.hafasQuery th.feedback             {width:180px;}
+.hafasQuery th.normal               {font-weight: normal;}
+.hafasQuery th.wrap                 {white-space: normal;}
+.hafasQuery th.sepline              {border-bottom: 1px solid #999;}
+.hafasQuery th.top                  {vertical-align: top;}
+.hafasQuery th.bottom               {vertical-align: bottom;}
+.hafasQuery td                      {background-color:#FFFFFF; color:#000; padding: 1px 3px 1px 3px;}
+.hafasQuery td.first                {/*width:140px;*/width:104px}
+.hafasQuery td.second               {width:170px; overflow:auto;}
+
+.hafasQuery td.tpQueryLocType       {white-space:nowrap;}
+.hafasQuery td.tpQueryLocName       {/*width:315px;*/ text-align:left;}
+.hafasQuery td.tpQueryButtonMapInput  {width:100px; text-align:left;}
+.hafasQuery td.tpQueryButtonVia1    {width:100px; text-align:left;}
+
+.hafasQuery td.radio                {width:15px; text-align: center;}
+.hafasQuery td.errormessage         {color:#c00; font-weight:bold;}
+.hafasQuery td.hint                 {color:#32992B; background-color:#E6E6E6; text-decoration:none;}
+.hafasQuery td.nopadding            {padding: 0px;}
+.hafasQuery td.seplineTop           {border-top: 1px solid #999;}
+.hafasQuery td.sepline              {border-bottom: 1px solid #999;}
+.hafasQuery td.borderright          {border-right: 1px solid #999;}
+.hafasQuery td.center               {text-align: center;}
+.hafasQuery td.top                  {vertical-align: top;}
+.hafasQuery td.right                {text-align: right;}
+.hafasQuery td.spaceRight           {padding-right:20px;}
+.hafasQuery tr.zebracol-1 td        {background-color: #fff;}
+.hafasQuery tr.zebracol-2 td        {background-color: #E6E6E6;}
+table.hafasResult                   {width: auto; background-color:#fff;}
+.hafasResult tr.button              {}
+.hafasResult tr.zebracol-1 td       {background-color: #fff;}
+.hafasResult tr.zebracol-2 td       {background-color: #E6E6E6;}
+.hafasResult tr.zebracol-3 td       {background-color: #D1EDCD;}
+.hafasResult tr.zebracol-4 td       {background-color: #E6E6E6;}
+.hafasResult tr.arrboard-dark td    {background-color: #E6E6E6;}
+.hafasResult tr.arrboard-light td   {background-color: #fff;}
+.hafasResult tr.depboard-dark td    {background-color: #D1EDCD;}
+.hafasResult tr.depboard-light td   {background-color: #E6E6E6;}
+.hafasResult tr.selected td         {background-color: #fff;}
+.hafasResult tr.selected_PS td      {background-color: #D8EBD7;}
+.hafasResult tr.selected td.diagram {background-color: transparent;}
+.hafasResult tr.selected_PS td.diagram {background-color: transparent;}
+.hafasResult tr.tpOverview td       {background-color:#E6E6E6;}
+.hafasResult tr.tpOverview_PS td    {background-color:#B2D8AF;}
+.hafasResult tr.tpDetails td        {background-color: #fff;}
+.hafasResult th                     {background-color:#666; color:#fff; font-weight: bold; padding: 1px 3px 1px 3px; white-space: nowrap;}
+.hafasResult th.querysummary        {text-align: left; vertical-align: top; background-color:#FFFFFF; color:#000; padding-right:5px;}
+.hafasResult th.dtlTHTimeArr,
+.hafasResult th.dtlTHTimeDep        {width:50px;}
+.hafasResult th.borderright         {border-right: 1px solid #E6E6E6;}
+.hafasResult th.borderleft          {border-left: 1px solid #E6E6E6;}
+.hafasResult th.sepline             {border-bottom: 1px solid #999;}
+.hafasResult th.left                {text-align: left;}
+.hafasResult th.middle              {vertical-align: middle;}
+.hafasResult th.diagram             {padding: 0px;}
+.hafasResult th a                   {color:#abcdcd;}
+.hafasResult th a:hover             {color:#fff;}
+.hafasResult td                     {color:#000; padding: 1px 3px 1px 3px;}
+.hafasResult td.querysummary        {padding-right:15px; background-color:#FFFFFF;}
+.hafasResult td.borderright         {border-right: 1px solid #E6E6E6}
+.hafasResult td.light               {background-color: #fff;}
+.hafasResult td.dark                {background-color: #E6E6E6;}
+.hafasResult td.emphasize           {background-color: #fff;}
+.hafasResult td.sepline             {border-bottom: 1px solid #999;}
+.hafasResult td.nopadding           {padding: 0px;}
+.hafasResult td.waipadding          {padding: 3px 3px 3px 3px;}
+.hafasResult td.errormessage        {color:#c00; font-weight:bold;}
+.hafasResult td.small               {font-size: 11px;}
+.hafasResult td.diagram             {padding: 0px; background-color:transparent;}
+.hafasResult td.prognosis           {color:#c00; font-weight:bold;}
+.hafasResult td.linklistFirst       {width:200px; overflow:auto;}
+.hafasResult td.linklistLink        {padding-right:15px;}
+.hafasResult td.calendarLegend      {border: 1px solid #999;}
+.hafasResult td.bold                {font-weight: bold;}
+.hafasResult td.italic              {font-style: italic;}
+.hafasResult td.left                {text-align: left;}
+.hafasResult td.center              {text-align: center;}
+.hafasResult td.right               {text-align: right;}
+.hafasResult td.top                 {vertical-align: top;}
+.hafasResult td.middle              {vertical-align: middle;}
+.hafasResult td.bottom              {vertical-align: bottom;}
+.hafasResult td.nowrap              {white-space: nowrap;}
+.hafasResult td.screennowrap        {white-space: nowrap;}
+.hafasResult td.screennowrap.leftspace {padding-left:20px;}
+.hafasResult td span.pre            {font-family: courier;}
+.hafasResult td span.bold           {font-weight: bold;}
+.hafasResult td span.small          {font-size: 11px;}
+.hafasResult td span.prognosis      {color:#c00; font-weight:bold;}
+.hafasResult td span.rtOnTime       {color:#0c0; font-weight:bold;}
+.hafasResult td span.rtDelayed      {color:#c00; font-weight:bold;}
+.hafasResult td span.resultTextual  {color:#32992B;}
+.hafasResult td span.resultTextualEmphasize   {color:#c00;}
+.hafasResult td div.tpDtl_altDep    {border-top:dotted 1px #999; font-size:10px;}
+table.hafasFooter                   {background-color:#ADAAAD; width: 100%;}
+.hafasFooter tr                     {}
+.hafasFooter td                     {color:#fff; padding: 1px 10px 1px 10px;}
+.hafasFooter td a                   {color:#abcdcd;}
+.hafasFooter td a:hover             {color:#fff;}
+div.calendar                        {width: 200px;background-color:#E6E6E6;}
+div.calendar table.header,
+div.calendar table.buttons,
+div.calendar table                  {width: 100%;cursor: default;border:none;color:#000;}
+div.calendar td                     {height: 22px;border: 1px solid #ccc;text-align: center;cursor: default;}
+div.calendar th                     {color:#ffffff;background-color: #33992B; text-align: center;font-weight: bold;}
+div.calendar th.enabled:hover       {background-color: #999;}
+div.calendar td.enabled:hover       {background-color: #999;}
+div.calendar td.disabled            {background-color:#fff;}
+div.calendar td.active              {background-color: #c00;}
+div.calendar td.active:hover        {background-color: #c00;}
+.hafasResult td.mapinput            {background-color:#fff;}
+.hafasResult td.legend              {background-color:#fff;}
+table.mainmap                       {border:1px solid #32992B;}
+table.mainmap td                    {padding:1px; vertical-align: middle; text-align: center; cursor:crosshair;}
+table.mapzoom                       {}
+table.mapzoom td                    {padding:1px 0px 0px 0px; background-color:#fff;}
+.mapzoom td.zoomin                  {}
+.mapzoom td.zoomout                 {padding:0px;}
+.mapzoom td div                     {padding: 0px;}
+.mapzoom td div a                   {padding-left:3px; display:block; background-color:#949494; color:#fff;}
+.mapzoom td div a:hover             {background-color:#c00; color:#fff;}
+.mapzoom td div.active a            {background-color:#c00; color:#fff}
+#popUpRect                          {position:absolute;background:none;visibility:hidden;z-index:100;border: #c00 2px solid;filter:Alpha(opacity=50, finishopacity=50, style=2)}
+table.hafasContentTable td.top      {vertical-align: top;}
+table.hafasHomeForm                 {border: 1px solid #7bc7dd;}
+.hafasHomeForm th                   {width:100px;}
+.hafasHomeForm td                   {width:160px;}
+.hafasHomeForm td.separator         {font-weight: bold; vertical-align: middle; color:#001f2f; white-space: nowrap; padding: 1px 3px 1px 3px; background-color:#7bc7dd;}
+.hafasHomeForm td.button            {padding: 0px 10px 5px 3px;}
+.hafasHomeForm td.autowidth         {width: auto;}
+.hafasHomeForm td input.size        {width:140px;}
+.hafasQuery td input.himMainInfo    {width:270px;}
+.hafasQuery td textarea.himMainInfo {width:270px; height:40px;}
+
+div.tariffPopup               {margin:0;padding:0;background-color:#fff;color:#000;font-size:12px;}
+p.tariffAstHint               {font-weight:bold;}
+p.tariffDate                  {}
+p.tariffLevel                 {font-weight:bold;}
+div.tariffQS                  {}
+div.tariffQS span.tariffQSLabel {display:block; float:left; width:40px; font-weight:bold;}
+table.tariffTable             {background-color:#e0e0e0; border-collapse:collapse; border:2px solid #c0c0c0;}
+table.tariffTable th,
+table.tariffTable td          {text-align:left; padding:3px 5px; border:1px solid #c0c0c0;}
+table.tariffTable td.amount   {text-align:right;}
+div.tariffPopup a             {}
+
+/* Legende Karte */
+div.mapCaptionMain            { margin-top:10px; }
+div.captionEntry              { float:left; }
+div.captionCorridor,
+div.captionRouted,
+div.captionJourney            {float:left;width:20px;margin-right:5px;}
+div.captionCorridor           {height:18px;background-color:#EFB8B0;}
+div.captionRouted,
+div.captionJourney            {height:4px;background-color:#FF7F7F;margin-top:7px;}
+div.captionJourney            {background-color:#7573EE;float:left;}
+
+div.captionCorridorText,
+div.captionJourneyText,
+div.captionRoutedText         {line-height:20px;float:left;margin-right:15px; }
+
+
+/* HIM Styles */
+img.himIcon                   {width:14px;}
+#hafas .journeyMessageHIM_prio1,
+#hafas .journeyMessageHIM_prio2,
+#hafas .journeyMessageHIM_prio3 {
+  line-height:17px;
+  padding:3px;
+  clear:both;
+  background-color:#fffebb;
+  border:1px solid #a8a900;
+  margin:5px 0;
+  vertical-align:middle;
+  white-space:normal;
+  }
+#hafas .journeyMessageHIM_prio1 img,
+#hafas .journeyMessageHIM_prio2 img,
+#hafas .journeyMessageHIM_prio3 img {vertical-align:middle;padding-bottom:2px;}
+
+#hafas .journeyMessageHIM_prio1 a.intLink,
+#hafas .journeyMessageHIM_prio2 a.intLink,
+#hafas .journeyMessageHIM_prio3 a.intLink {color:#0000FF;text-decoration:underline;padding:0px;}
+
+#hafas .messagePart,
+#hafas .messagePart_prio1,
+#hafas .messagePart_prio2,
+#hafas .messagePart_prio3 {border-top:dotted 1px #a8a900;margin-left:30px;}
+

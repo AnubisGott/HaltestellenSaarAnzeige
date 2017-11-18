@@ -1,0 +1,1003 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0086)http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&ident=7q.0958601.1509704315& -->
+<html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Saarfahrplan Ankunft&nbsp;/&nbsp;Abfahrt</title>
+<meta http-equiv="X-UA-Compatible" content="IE=10">
+
+<link rel="shortcut icon" href="http://www.saarfahrplan.de/hafas-res/img/favicon.ico" type="image/ico">
+<link rel="apple-touch-icon-precomposed" href="http://www.saarfahrplan.de/hafas-res/img/apple-touch-icon-precomposed.png">
+<script type="text/javascript" src="./Saarfahrplan Ankunft _ Abfahrt_files/hafas_standard.js.Download"></script>
+<script type="text/javascript" src="./Saarfahrplan Ankunft _ Abfahrt_files/FSuggest_v1.2.js.Download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var t_suggestionsoff = "Vorschläge aus";
+var t_suggestionson = "Vorschläge ein";
+var t_minimapoff = "Mini-Karte aus";
+var t_suggestions = "Vorschl&#228;ge";
+var t_suggestionscookie = "Favoriten";
+var t_topMatches = "Toptreffer";
+var t_furtherMatches = "Nach weiteren Treffern suchen...";
+var t_meansOfTransport = "Verkehrsmittel an";
+var t_connectionsPerYear = "Fahrten im Jahr";
+var t_location = "Ort";
+var t_limitSearchMap = "Suche nur auf Kartenausschnitt";
+var t_minimapon = "Mini-Karte an";
+var t_suggestHint1 = "Keine Toptreffer gefunden. Benutzen Sie die <br/><b>Suggest-Funktion</b>, in dem Sie mindestens <br/><b>";
+var t_suggestHint2 = "Buchstaben eingeben</b>!";
+var t_filterStations = "Hst.";
+var t_filterAddresses = "Adressen";
+var t_filterPOI = "POI";
+function fixedLoc(par){
+//document.getElementById('inputEvaId').value = par.evaId;
+}
+function getElementsByClass(searchClass, domNode, tagName) {
+if (domNode == null) {
+domNode = document.body;
+}
+if (tagName == null) {
+tagName = "*";
+}
+var el = new Array;
+var tags = domNode.getElementsByTagName(tagName);
+var tcl = "" + searchClass + "";
+for (i = 0, j = 0; i < tags.length; i++) {
+var test = " " + tags[i].className + " ";
+if (tags[i].className.indexOf(searchClass) != -1) {
+el[j++] = tags[i];
+}
+}
+return el;
+}
+function initHafasSuggest(){
+var elements = getElementsByClass("HafasSuggest",null,"input");
+for (var i=0;i < elements.length; i++) {
+if(elements[i].id != 'undefined') {
+var suggid = elements[i].id;
+}else{
+var suggid = 'hfs_suggest_input_' + i;
+}
+var classes = elements[i].className.split(" ");
+var suggestType = 0;
+var stationBoardSuggest = false;
+var isVia = false;
+var callbackArr = new Array();
+for(var j=0;j < classes.length; j++){
+if(classes[j] == "st"){
+suggestType += 1;
+}else if(classes[j] == "adr"){
+suggestType += 2;
+}else if(classes[j] == "poi"){
+suggestType += 4;
+}else if(classes[j] == "stb"){
+stationBoardSuggest = true;
+}else if(classes[j] == "via"){
+isVia = true;
+}else if(classes[j].indexOf('sc_') >= 0){
+var selCallback = eval(classes[j].replace('sc_',''));
+callbackArr.push(selCallback);
+}
+}
+if(suggestType == 0){
+suggestType = 255;
+}
+var attr = (elements[i].getAttribute('name') != null)?elements[i].getAttribute('name'):'S';
+var currParam = {loc:suggid,
+type:attr,
+minChar:4,
+cookiename:'std30-history',
+stopDelay:400,
+requestType:'js',
+useFurtherMatches:true ,
+useProducts:true,
+useWeight:true,
+useWrap:false,
+useHouseNumber:false,
+useHighlighting:true,
+useCategory:false,
+detachable:true,
+useTypeFilter:false,
+useMaps:true,
+useTopFavorites:true,
+useAutoFillIn:true
+};
+if(stationBoardSuggest){
+currParam.type = "stb";
+}
+if(isVia){
+suggid.match(/(\d)/);
+var viaNo = RegExp.$1;
+currParam.requestURL = 'http://www.saarfahrplan.de/cgi-bin/ajax-getstop.exe/dny?start=1&tpl=suggest2json&REQ0JourneyStops'+viaNo+'.0A='+suggestType+'&getstop=1&noSession=yes&REQ0JourneyStopsB=12&REQ0JourneyStops'+viaNo+'.0G=';
+}else{
+currParam.requestURL = 'http://www.saarfahrplan.de/cgi-bin/ajax-getstop.exe/dny?start=1&tpl=suggest2json&REQ0JourneyStopsS0A='+suggestType+'&getstop=1&noSession=yes&REQ0JourneyStopsB=12&REQ0JourneyStopsS0G=';
+}
+currParam.selectCallback = function(par){
+for(var i=0; i < callbackArr.length;i++){
+callbackArr[i](par);
+}
+};
+new FSuggest(currParam);
+}
+}
+/* ]]> */
+</script>
+<script type="text/javascript">
+var gImagePath = '/hafas-res/img/';
+var fsugg_map = '<img src="/hafas-res/img/icon_google_earth.gif">';
+</script>
+<link rel="stylesheet" type="text/css" href="./Saarfahrplan Ankunft _ Abfahrt_files/vgs.css">
+<style type="text/css">
+ul.jmap_slider      { margin:0px;list-style-type:none; padding:0px;  }
+ul.jmap_slider a    { color: black;}
+.additionMapMenu    { background-color: white;
+border: 2px solid #dfdfdf;
+font-size: 11px;
+padding: 0 0 0 4px;
+position: absolute;
+right: 116px;
+top: 4px;
+width: 85px;
+line-height:20px;
+z-index: 200000;    }
+.additionMapMenu a  { color:black;font-weight:bold;}
+.suggestButton      { background-position:2px 3px;background-repeat:no-repeat;background-image:url(/hafas-res/img/icon_calexport.gif);}
+#suggestion div     { background-image:url(/hafas-res/img/suggest_stop.gif);background-repeat:no-repeat;background-position:2px 2px; }
+#suggestion div.train,
+#suggestion div.trainselected   { background-image:url(/hafas-res/img/look/prod_ic.gif); background-repeat:no-repeat; background-position: 3px 1px;}
+#suggestion div.poi,
+#suggestion div.poiselected     { background-image:url(/hafas-res/img/suggest_poi.gif);background-repeat:no-repeat;background-position:2px 2px; }
+#suggestion div.adr,
+#suggestion div.adrselected     { background-image:url(/hafas-res/img/suggest_adr.gif);background-repeat:no-repeat;background-position:2px 2px; }
+#suggestion div.delfi,
+#suggestion div.delfiselected     { background-image:url(/hafas-res/img/suggest_delfi.gif);background-repeat:no-repeat;background-position:5px 3px; }
+#suggestion div.furtherMatches,
+#suggestion div.furtherMatchesselected  { background-image:none;}
+</style>
+<link rel="stylesheet" type="text/css" href="./Saarfahrplan Ankunft _ Abfahrt_files/vgs_suggest.css">
+</head>
+<body>
+<div id="hafas"><a name="top"></a>
+<table class="hafasHeader" cellspacing="0" summary="Kopfbereich">
+<tbody><tr>
+<td class="logo bottom nopadding" style="width:300px;"><a href="http://www.saarfahrplan.de/"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/logo_saarfahrplan.jpg" alt="Saarfahrplan"></a></td>
+<td class="logo bottom nopadding" style="width:400px;"><a href="http://www.vgs-online.de/?p=997"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/logo_saarfahrplan.gif" alt="Saarfahrplan"></a></td>
+<td class="logo bottom nopadding" style="width:auto;"><a href="http://www.vgs-online.de/"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/logo_vgs.jpg" alt="VGS"></a></td>
+<td class="logo bottom nopadding" style="width:171px;"><a href="http://www.saarvv.de/"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/logo_saarvv.jpg" alt="SaarVV"></a></td>
+</tr>
+<tr>
+<td colspan="3" style="background:url(/hafas-res/img/header_line.gif) repeat-x;height:41px;">
+Der Saarfahrplan optimiert für Handy/Smartphone: <a class="headerLink" href="http://mobil.saarfahrplan.de/">mobil.saarfahrplan.de</a>
+</td>
+<td colspan="1" style="background:url(/hafas-res/img/header_line.gif) repeat-x;height:41px;" align="right">
+<b>Hotline: 06898 / 500 4000</b>
+</td>
+</tr>
+</tbody></table>
+<table class="hafasSlider" cellspacing="0" summary="HAFAS-Navigation">
+<tbody><tr>
+<td class="slider"><a href="http://www.saarfahrplan.de/cgi-bin/query.exe/dn?">Verbindung</a></td>
+<td class="slider"><a href="http://www.saarfahrplan.de/cgi-bin/query.exe/dn?view=map&amp;SetGlobalOptionGO_mapSearch=ACTIVE&amp;REQMapCenterX=9741016&amp;REQMapCenterY=52376763&amp;REQMapScaling=500000">Karte</a></td>
+<td class="activeslider"><a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?">Ankunft&nbsp;/&nbsp;Abfahrt</a></td>
+<td class="slider"><a href="http://www.saarfahrplan.de/cgi-bin/tb/query-p2w.exe/dn?whichTask=pf&amp;">Pendlerfahrplan</a></td>
+<td class="slider"><a href="http://www.saarfahrplan.de/cgi-bin/tb/query-p2w.exe/dn?whichTask=hst&amp;">Haltestellenfahrplan</a></td>
+<td class="slider"><a href="http://www.saarfahrplan.de/cgi-bin/query.exe/dn?wai=yes&amp;">Textversion</a></td>
+<td class="slider"><a href="http://www.saarfahrplan.de/cgi-bin/eu/query.exe/dn?">International <span class="red">(beta)</span></a></td>
+</tr>
+</tbody></table>
+<table class="hafasHeader" cellspacing="0" summary="Sprachwahl">
+<tbody><tr>
+<td class="changeLanguage borderbottom" style="padding-left:10px;"><a class="activelanguage" href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?newrequest=yes&amp;"><img class="language" src="./Saarfahrplan Ankunft _ Abfahrt_files/flag_germany.gif" border="0" width="16" height="10" alt="Deutsch" title="Deutsch"></a>
+<a class="language" href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/en?newrequest=yes&amp;"><img class="language" src="./Saarfahrplan Ankunft _ Abfahrt_files/flag_uk.gif" border="0" width="16" height="10" alt="English" title="English"></a>
+<a class="language" href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/fn?newrequest=yes&amp;"><img class="language" src="./Saarfahrplan Ankunft _ Abfahrt_files/flag_france.gif" border="0" width="16" height="10" alt="Français" title="Français"></a>
+</td></tr>
+</tbody></table>
+<table class="hafasHeader" cellspacing="0" summary="Seitentitel/Hauptüberschrift">
+<tbody><tr>
+<td class="pagetitle">Hauptbahnhof, Saarbrücken</td>
+<td class="pagetitle right">Ankunftsplan gültig am 03.11.17&nbsp; (12:18 - 12:25 Uhr)</td>
+</tr>
+</tbody></table>
+<table class="hafasContentTable" cellspacing="0">
+<tbody><tr>
+<td class="hafasContentTable">
+<div class="separator" style="margin-bottom:1px;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/stress_sep.gif" width="11" height="11" alt="">Ihre Anfrage</div>
+<table class="hafasResult" cellspacing="0">
+<tbody><tr>
+<th class="querysummary">Bhf./Haltest.:</th>
+<td class="querysummary screennowrap">Hauptbahnhof, Saarbrücken
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;#end">(Allgemeine Informationen)</a>
+<a href="http://www.saarfahrplan.de/cgi-bin/query.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;view=map&amp;REQMapRoute0.DisplayMode=LOCATION&amp;MapLocation.Scaling=2000&amp;MapLocation.X=6990327&amp;MapLocation.Y=49240122&amp;MapLocation.Name=Hauptbahnhof,%20Saarbr%FCcken"><img class="icon" src="./Saarfahrplan Ankunft _ Abfahrt_files/icon_std.gif" width="13" height="13" alt=""> Karte</a>
+</td>
+</tr>
+<tr>
+<th class="querysummary">Fahrplan:</th>
+<td class="querysummary">
+Fr, 03.11.17,
+Ankunft 12:18
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=now&amp;productsFilter=1:1111111111&amp;selectDate=today&amp;maxJourneys=10&amp;start=yes"><img class="icon" src="./Saarfahrplan Ankunft _ Abfahrt_files/icon_std.gif" width="13" height="13" alt=""> aktuell</a>
+</td>
+</tr>
+</tbody></table>
+<div class="separatingLine" style="margin-top:5px;"><hr style="display:none;"></div>
+<table class="hafasButtons" cellspacing="0">
+<tbody><tr>
+<td class="nowrap links"><a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?input=10600&amp;boardType=arr&amp;time=12:18&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=09.12.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;editStation=yes&amp;dirInput=&amp;"><img class="icon" src="./Saarfahrplan Ankunft _ Abfahrt_files/icon_std.gif" width="13" height="13" alt=""> Anfrage ändern</a><a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;"><img class="icon" src="./Saarfahrplan Ankunft _ Abfahrt_files/icon_std.gif" width="13" height="13" alt=""> Neue Anfrage</a><a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?input=10600&amp;boardType=dep&amp;time=12:18&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=09.12.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;"><img class="icon" src="./Saarfahrplan Ankunft _ Abfahrt_files/icon_std.gif" width="13" height="13" alt=""> Abfahrtsplan</a><a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?input=10600&amp;boardType=arr&amp;time=12:18&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=09.12.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;pageViewMode=PRINT&amp;dirInput=&amp;" target="Printview" onclick="openPopup(&#39;about:blank&#39;,&#39;Printview&#39;,20,200,700,600,&#39;001000&#39;);" accesskey="p"><img class="icon" src="./Saarfahrplan Ankunft _ Abfahrt_files/icon_print.gif" width="14" height="14" alt=""> Druckansicht</a></td></tr>
+</tbody></table>
+<div class="separator" style="margin-bottom:1px;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/stress_sep.gif" width="11" height="11" alt="">Ankunft (12:18 - 12:25)</div>
+<table cellspacing="0" class="hafasResult" style="width: 100%;">
+<tbody><tr>
+<th class="borderright">Zeit</th>
+<th class="borderright">Prognose</th>
+<th class="borderright">Fahrt</th>
+<th class="borderright">Aus Richtung</th>
+<th>Gleis/Haltestelle</th>
+</tr>
+<tr class="arrboard-dark">
+<td class="bold center sepline top">12:18</td>
+<td class="sepline nowrap top">
+&nbsp;
+</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/553407/210068/301806/33568/80?seqnr=3&amp;ident=7q.0958601.1509704315&amp;backLink=sq&amp;date=03.11.17&amp;time=12:18&amp;sqPf=1:1111111111&amp;sqMj=10&amp;sqDa=03.11.17&amp;sqTi=12:18&amp;station_evaId=10600&amp;sqType=arr&amp;station_type=arr&amp;sqEvaId=10600&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=15537&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Markt, Heusweiler
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=15537&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Markt, Heusweiler
+</a>
+11:43
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=17600&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Walpershofen Mitte, Riegelsberg
+</a>
+11:48
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=17523&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Riegelsberg Süd, Riegelsberg
+</a>
+12:01
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10518&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Siedlerheim, Saarbrücken Malstatt
+</a>
+12:08
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10511&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Rastpfuhl, Saarbrücken Malstatt
+</a>
+12:09
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10202&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Pariser Platz/St.Paulus, Saarbrücken Malstatt
+</a>
+12:11
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10203&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Cottbuser Platz, Saarbrücken Malstatt
+</a>
+12:12
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10201&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Ludwigstr., Saarbrücken Malstatt
+</a>
+12:14
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10603&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Trierer Str., Saarbrücken
+</a>
+12:16
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Hauptbahnhof, Saarbrücken
+</a>
+12:18
+</td>
+<td class="center sepline top">
+S<br>
+&nbsp;
+</td>
+</tr>
+<tr class="arrboard-light">
+<td class="bold center sepline top">12:20</td>
+<td class="sepline nowrap top">
+<span class="rtDelayed">+4 min.</span>
+</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/575349/230175/957338/286897/80?seqnr=3&amp;ident=7q.0958601.1509704315&amp;backLink=sq&amp;date=03.11.17&amp;time=12:20&amp;sqPf=1:1111111111&amp;sqMj=10&amp;sqDa=03.11.17&amp;sqTi=12:18&amp;station_evaId=10600&amp;sqType=arr&amp;station_type=arr&amp;sqEvaId=10600&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/bus_pic.gif" width="24" height="24" alt="Bus  105" style="vertical-align:top"> Bus  105</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10405&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Rodenhof Kálmánstr., Saarbrücken
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10405&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Rodenhof Kálmánstr., Saarbrücken
+</a>
+12:01
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10404&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Grülingsstr., Saarbrücken Malstatt
+</a>
+12:03
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10404&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Grülingsstr., Saarbrücken Malstatt
+</a>
+12:08
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10407&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Neunkircher Str., Saarbrücken Malstatt
+</a>
+12:09
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10410&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Rodenhof Kirche, Saarbrücken
+</a>
+12:13
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10403&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+An der Schlucht, Saarbrücken Malstatt
+</a>
+12:14
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10411&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Sittersweg, Saarbrücken Malstatt
+</a>
+12:15
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10401&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Ludwigsberg, Saarbrücken Malstatt
+</a>
+12:16
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10603&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Trierer Str., Saarbrücken
+</a>
+12:18
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Hauptbahnhof, Saarbrücken
+</a>
+12:20
+</td>
+<td class="center sepline top">
+D<br>
+&nbsp;
+</td>
+</tr>
+<tr class="arrboard-dark">
+<td class="bold center sepline top">12:22</td>
+<td class="sepline nowrap top">
+&nbsp;
+</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/297075/124781/578006/189984/80?seqnr=3&amp;ident=7q.0958601.1509704315&amp;backLink=sq&amp;date=03.11.17&amp;time=12:22&amp;sqPf=1:1111111111&amp;sqMj=10&amp;sqDa=03.11.17&amp;sqTi=12:18&amp;station_evaId=10600&amp;sqType=arr&amp;station_type=arr&amp;sqEvaId=10600&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/bus_pic.gif" width="24" height="24" alt="Bus   30" style="vertical-align:top"> Bus   30</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=19701&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Bahnhof, Forbach (F)
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=19701&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Bahnhof, Forbach (F)
+</a>
+12:00
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=19703&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Rue des Écoles, Stiring-Wendel (F)
+</a>
+12:02
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=19702&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Rue St Charles, Stiring-Wendel (F)
+</a>
+12:04
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=19706&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Rue de Metz, Stiring-Wendel (F)
+</a>
+12:06
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10025&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Goldene Bremm, Saarbrücken
+</a>
+12:07
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10046&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Schönecker Weg, Saarbrücken
+</a>
+12:12
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10036&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Messegelände, Saarbrücken
+</a>
+12:15
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=210004&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Gutenbergstr., Saarbrücken
+</a>
+12:19
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10601&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Bahnhofstr., Saarbrücken
+</a>
+12:20
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Hauptbahnhof, Saarbrücken
+</a>
+12:22
+</td>
+<td class="center sepline top">
+C<br>
+&nbsp;
+</td>
+</tr>
+<tr class="arrboard-light">
+<td class="bold center sepline top">12:22</td>
+<td class="sepline nowrap top">
+&nbsp;
+</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/250362/109748/276768/54941/80?seqnr=3&amp;ident=7q.0958601.1509704315&amp;backLink=sq&amp;date=03.11.17&amp;time=12:22&amp;sqPf=1:1111111111&amp;sqMj=10&amp;sqDa=03.11.17&amp;sqTi=12:18&amp;station_evaId=10600&amp;sqType=arr&amp;station_type=arr&amp;sqEvaId=10600&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/bus_pic.gif" width="24" height="24" alt="Bus  121" style="vertical-align:top"> Bus  121</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10611&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Rathaus, Saarbrücken
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10611&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Rathaus, Saarbrücken
+</a>
+11:45
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10610&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Rabbiner-Rülf-Platz, Saarbrücken
+</a>
+11:48
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10044&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Schlossplatz, Saarbrücken
+</a>
+11:53
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10022&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Feldmannstr., Saarbrücken
+</a>
+11:57
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10049&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+HTW/SWS, Saarbrücken
+</a>
+12:14
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10043&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Roonstr., Saarbrücken
+</a>
+12:15
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=210027&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Hansahaus/Ludwigskirche, Saarbrücken
+</a>
+12:18
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10004&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Gutenbergstr., Saarbrücken
+</a>
+12:19
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10601&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Bahnhofstr., Saarbrücken
+</a>
+12:20
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Hauptbahnhof, Saarbrücken
+</a>
+12:22
+</td>
+<td class="center sepline top">
+C<br>
+&nbsp;
+</td>
+</tr>
+<tr class="arrboard-dark">
+<td class="bold center sepline top">12:23</td>
+<td class="sepline nowrap top">
+&nbsp;
+</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/125502/67357/39350/22160/80?seqnr=3&amp;ident=7q.0958601.1509704315&amp;backLink=sq&amp;date=03.11.17&amp;time=12:23&amp;sqPf=1:1111111111&amp;sqMj=10&amp;sqDa=03.11.17&amp;sqTi=12:18&amp;station_evaId=10600&amp;sqType=arr&amp;station_type=arr&amp;sqEvaId=10600&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=8001135&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Brebach Bf, Saarbrücken
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=8001135&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Brebach Bf, Saarbrücken
+</a>
+12:10
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10602&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Römerkastell, Saarbrücken
+</a>
+12:13
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10605&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Kieselhumes, Saarbrücken
+</a>
+12:14
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10627&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Hellwigstr., Saarbrücken
+</a>
+12:15
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10609&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Uhlandstr., Saarbrücken
+</a>
+12:17
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10606&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Landwehrplatz, Saarbrücken
+</a>
+12:18
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10619&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Johanneskirche, Saarbrücken
+</a>
+12:20
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10604&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Kaiserstr., Saarbrücken
+</a>
+12:21
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Hauptbahnhof, Saarbrücken
+</a>
+12:23
+</td>
+<td class="center sepline top">
+S<br>
+&nbsp;
+</td>
+</tr>
+<tr class="arrboard-light">
+<td class="bold center sepline top">12:23</td>
+<td class="sepline nowrap top">
+<span class="rtOnTime" title="+0 min.">pünktl.</span>
+</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/34242/37718/328080/152630/80?seqnr=3&amp;ident=7q.0958601.1509704315&amp;backLink=sq&amp;date=03.11.17&amp;time=12:23&amp;sqPf=1:1111111111&amp;sqMj=10&amp;sqDa=03.11.17&amp;sqTi=12:18&amp;station_evaId=10600&amp;sqType=arr&amp;station_type=arr&amp;sqEvaId=10600&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/bus_pic.gif" width="24" height="24" alt="Bus  122" style="vertical-align:top"> Bus  122</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=12207&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Füllengarten Siedlung, Saarbrücken Burbach
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=12207&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Füllengarten Siedlung, Saarbrücken Burbach
+</a>
+12:01
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=12205&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Kirche, Saarbrücken Burbach
+</a>
+12:08
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=12204&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Brunnenstr., Saarbrücken Burbach
+</a>
+12:11
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=12200&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Bahnhof, Saarbrücken Burbach
+</a>
+12:12
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10207&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Hochstr., Saarbrücken Malstatt
+</a>
+12:13
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10210&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Metzer Brücke, Saarbrücken Malstatt
+</a>
+12:15
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10209&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Malstatter Markt, Saarbrücken Malstatt
+</a>
+12:18
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10204&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Auf der Werth/Bürgerpark, Saarbrücken Malstatt
+</a>
+12:19
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10603&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Trierer Str., Saarbrücken
+</a>
+12:21
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Hauptbahnhof, Saarbrücken
+</a>
+12:23
+</td>
+<td class="center sepline top">
+D<br>
+&nbsp;
+</td>
+</tr>
+<tr class="arrboard-dark">
+<td class="bold center sepline top">12:23</td>
+<td class="sepline nowrap top">
+&nbsp;
+</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/779367/286193/99132/210230/80?seqnr=3&amp;ident=7q.0958601.1509704315&amp;backLink=sq&amp;date=03.11.17&amp;time=12:23&amp;sqPf=1:1111111111&amp;sqMj=10&amp;sqDa=03.11.17&amp;sqTi=12:18&amp;station_evaId=10600&amp;sqType=arr&amp;station_type=arr&amp;sqEvaId=10600&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/bus_pic.gif" width="24" height="24" alt="Bus  124" style="vertical-align:top"> Bus  124</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10909&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Universität Busterminal, Saarbrücken
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10909&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Universität Busterminal, Saarbrücken
+</a>
+12:05
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10905&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Universität Mensa, Saarbrücken
+</a>
+12:06
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10904&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Universität Campus, Saarbrücken
+</a>
+12:08
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10903&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Universität Botanischer Garten, Saarbrücken
+</a>
+12:10
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10902&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Landessportschule, Saarbrücken
+</a>
+12:11
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10901&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Wildpark, Saarbrücken
+</a>
+12:12
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10613&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Brauerstr./Fernbusbahnhof, Saarbrücken
+</a>
+12:19
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=110612&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Haus der Zukunft, Saarbrücken
+</a>
+12:20
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10641&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Stadtbad (ehem.), Saarbrücken
+</a>
+12:21
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Hauptbahnhof, Saarbrücken
+</a>
+12:23
+</td>
+<td class="center sepline top">
+C<br>
+&nbsp;
+</td>
+</tr>
+<tr class="arrboard-light">
+<td class="bold center sepline top">12:25</td>
+<td class="sepline nowrap top">
+&nbsp;
+</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/688548/241040/571896/56434/80?seqnr=3&amp;ident=7q.0958601.1509704315&amp;backLink=sq&amp;date=03.11.17&amp;time=12:25&amp;sqPf=1:1111111111&amp;sqMj=10&amp;sqDa=03.11.17&amp;sqTi=12:18&amp;station_evaId=8000323&amp;sqType=arr&amp;station_type=arr&amp;sqEvaId=10600&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/rb_pic.gif" width="24" height="24" alt="RB 33614" style="vertical-align:top"> RB 33614</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=8004253&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Neubrücke (Nahe)
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=8004253&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Neubrücke (Nahe)
+</a>
+11:03
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=8000154&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Türkismühle
+</a>
+11:10
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=8005659&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+St. Wendel
+</a>
+11:41
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=8004392&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Niederlinxweiler
+</a>
+11:47
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=8000875&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Ottweiler
+</a>
+11:50
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=8000272&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Neunkirchen (Saar) Hbf
+</a>
+11:58
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=8005796&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Sulzbach (Saar)
+</a>
+12:13
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=8001570&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Dudweiler
+</a>
+12:17
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=8003108&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Jägersfreude
+</a>
+12:19
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=8000323&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Saarbrücken Hbf
+</a>
+12:25
+</td>
+<td class="center sepline top">
+16<br>
+Saarbrücken Hbf
+</td>
+</tr>
+<tr class="arrboard-dark">
+<td class="bold center sepline top">12:25</td>
+<td class="sepline nowrap top">
+<span class="rtDelayed">+1 min.</span>
+</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/92871/56553/975700/456893/80?seqnr=3&amp;ident=7q.0958601.1509704315&amp;backLink=sq&amp;date=03.11.17&amp;time=12:25&amp;sqPf=1:1111111111&amp;sqMj=10&amp;sqDa=03.11.17&amp;sqTi=12:18&amp;station_evaId=10600&amp;sqType=arr&amp;station_type=arr&amp;sqEvaId=10600&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/sbs_pic.gif" width="24" height="24" alt="S      1" style="vertical-align:top"> S      1</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10518&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Siedlerheim, Saarbrücken Malstatt
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10518&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Siedlerheim, Saarbrücken Malstatt
+</a>
+12:15
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10511&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Rastpfuhl, Saarbrücken Malstatt
+</a>
+12:16
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10202&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Pariser Platz/St.Paulus, Saarbrücken Malstatt
+</a>
+12:18
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10203&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Cottbuser Platz, Saarbrücken Malstatt
+</a>
+12:19
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10201&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Ludwigstr., Saarbrücken Malstatt
+</a>
+12:21
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10603&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Trierer Str., Saarbrücken
+</a>
+12:23
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Hauptbahnhof, Saarbrücken
+</a>
+12:25
+</td>
+<td class="center sepline top">
+S<br>
+&nbsp;
+</td>
+</tr>
+<tr class="arrboard-light">
+<td class="bold center sepline top">12:25</td>
+<td class="sepline nowrap top">
+&nbsp;
+</td>
+<td class="bold top nowrap sepline">
+<a href="http://www.saarfahrplan.de/cgi-bin/traininfo.exe/dn/572802/217121/860692/239415/80?seqnr=3&amp;ident=7q.0958601.1509704315&amp;backLink=sq&amp;date=03.11.17&amp;time=12:25&amp;sqPf=1:1111111111&amp;sqMj=10&amp;sqDa=03.11.17&amp;sqTi=12:18&amp;station_evaId=10600&amp;sqType=arr&amp;station_type=arr&amp;sqEvaId=10600&amp;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/bus_pic.gif" width="24" height="24" alt="Bus  108" style="vertical-align:top"> Bus  108</a>
+</td>
+<td class="sepline top">
+<span class="bold">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=11117&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Klinikum, Saarbrücken St.Arnual
+</a>
+</span>
+<br>
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=11117&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Klinikum, Saarbrücken St.Arnual
+</a>
+12:03
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=11104&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Julius-Kiefer-Str., Saarbrücken St.Arnual
+</a>
+12:12
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=11101&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Blücherstr., Saarbrücken St.Arnual
+</a>
+12:14
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10022&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Feldmannstr., Saarbrücken
+</a>
+12:15
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10048&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Spichererbergstr., Saarbrücken
+</a>
+12:17
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10044&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Schlossplatz, Saarbrücken
+</a>
+12:18
+•
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10027&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Hansahaus/Ludwigskirche, Saarbrücken
+</a>
+12:20
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10004&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Gutenbergstr., Saarbrücken
+</a>
+12:22
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10601&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Bahnhofstr., Saarbrücken
+</a>
+12:23
+-
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=now&amp;selectDate=today&amp;maxJourneys=10&amp;productsFilter=1:1111111111&amp;start=yes">
+Hauptbahnhof, Saarbrücken
+</a>
+12:25
+</td>
+<td class="center sepline top">
+C<br>
+&nbsp;
+</td>
+</tr>
+<tr>
+<td class="small sepline">&nbsp;</td>
+<td class="small sepline">&nbsp;</td>
+<td class="small sepline">&nbsp;</td>
+<td class="small sepline">
+Anzeige aller Halte ab diesem Zeichen •, davor Anzeige der wichtigsten Halte.
+</td>
+<td class="small sepline">&nbsp;</td>
+</tr>
+</tbody></table>
+<table class="hafasButtons" cellspacing="0">
+<tbody><tr>
+<td class="links">
+<a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?input=10600&amp;boardType=arr&amp;time=12:25%2B1&amp;productsFilter=1:1111111111&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;maxJourneys=10&amp;&amp;start=yes&amp;dirInput=&amp;"><b><img class="icon" src="./Saarfahrplan Ankunft _ Abfahrt_files/icon_std.gif" width="13" height="13" alt=""> Weitere Fahrten</b></a>
+</td>
+<td class="links">
+Für weitere Fahrplaninformationen wählen Sie bitte Ihre gewünschte Uhrzeit:
+<select name="selectTime" onchange="window.location.replace(this.options[this.selectedIndex].value)">
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=00:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">00:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=01:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">01:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=02:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">02:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=03:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">03:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=04:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">04:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=05:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">05:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=06:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">06:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=07:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">07:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=08:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">08:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=09:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">09:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=10:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">10:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=11:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">11:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=12:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">12:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=13:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">13:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=14:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">14:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=15:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">15:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=16:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">16:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=17:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">17:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=18:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">18:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=19:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">19:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=20:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">20:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=21:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">21:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=22:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">22:00</option>
+<option value="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10600&amp;boardType=arr&amp;time=23:00&amp;maxJourneys=10&amp;dateBegin=03.11.17&amp;dateEnd=03.11.17&amp;selectDate=today&amp;productsFilter=1:1111111111&amp;start=yes&amp;dirInput=&amp;">23:00</option>
+</select>
+</td>
+</tr>
+</tbody></table>
+<div class="separator" style="margin-top:10px; margin-bottom:1px;"><img src="./Saarfahrplan Ankunft _ Abfahrt_files/stress_sep.gif" width="11" height="11" alt="">Hauptbahnhof, Saarbrücken - Allgemeine Informationen</div>
+<a name="end"></a>
+<table cellspacing="0" class="hafasResult">
+<tbody><tr>
+<td valign="top">
+<span class="bold">Folgende Haltestellen sind auf dieser Übersicht enthalten:</span>
+<br>
+- <a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=8000323&amp;boardType=arr&amp;time=12:00&amp;productsFilter=1:1111111111&amp;">Saarbrücken Hbf</a>
+<br>
+</td>
+<td>&nbsp;</td>
+<td valign="top">
+<span class="bold">Haltestellen in Fußwegnähe:</span>
+<br>
+- <a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=8000323&amp;boardType=arr&amp;time=12:00&amp;productsFilter=1:1111111111&amp;">Saarbrücken Hbf</a> (ca. 4 Minuten)
+<br>
+- <a href="http://www.saarfahrplan.de/cgi-bin/stboard.exe/dn?seqnr=3&amp;ident=7q.0958601.1509704315&amp;input=10647&amp;boardType=arr&amp;time=12:00&amp;productsFilter=1:1111111111&amp;">Hauptbahnhof Nord, Saarbrücken</a> (ca. 6 Minuten)
+<br>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<table class="hafasFooter" cellspacing="0" summary="Fußbereich">
+<tbody><tr>
+<td>
+Reiseinformationen gültig vom 11.12.16 bis 09.12.17.
+<br>
+Software/Daten: HAFAS 5.42.STANDARD.4.7/5.42.STANDARD.5.0.1 - 03.11.17
+<br>
+© 2017
+<a href="http://www.vgs-online.de/">VGS mbH</a>,&nbsp;
+<a href="http://www.hacon.de/hacon/index.shtml">HaCon Ingenieurgesellschaft mbH</a>.
+Alle Angaben ohne Gewähr.
+<a href="http://www.saarfahrplan.de/cgi-bin/help.exe/dn?tpl=imprint&amp;" target="imprint" onclick="openPopup(&#39;about:blank&#39;,&#39;imprint&#39;,200,200,325,275,&#39;000000&#39;)">Impressum</a>
+<br>
+</td>
+</tr>
+</tbody></table>
+</div>
+
+
+</body></html>
